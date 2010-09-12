@@ -1,15 +1,29 @@
 @CHARSET "ISO-8859-1";
+p {
+	text-indent:50px;
+	width: 90%;
+	margin-left: 5%;
+}
+
+li {
+	margin-top: 30px;	
+}
+td {
+	text-align: center;	
+}
+.border {
+	border-style: none;	
+}
 .main {
 	border: black 1px solid;
 	position: absolute;
-	height: 1600px;
+	height: 1650px;
 	width: 1000px;
 	display: table-cell;
 	vertical-align: middle;
 	left: 50%;
 	margin-left: -450px;
 }
-
 .header {
 	border: black 1px solid;
 	height: 150px;
@@ -18,7 +32,6 @@
 	margin-left: auto;
 	margin-right: auto;
 }
-
 .sideTab {
 	background-color: blue;
 	border: black 1px solid;
@@ -34,7 +47,6 @@
 	color: black;
 	text-decoration: none;
 }
-
 .outerContent {
 	//border: black 1px solid;
 	position: absolute;
@@ -43,49 +55,38 @@
 	top: 200px;
 	right: 30px;
 }
-
 .innerContent {
 	position: absolute;
 	visibility: hidden;
 	width: 100%;
 }
-
-p {
-	text-indent:50px;
-	width: 90%;
-	margin-left: 5%;
-}
-
-li {
-	margin-top: 30px;	
-}
-
 .emphasis {
 	font-weight: bold;
 	text-decoration: underline;	
 }
-
 .smallHeader {
 	font-size: 20px;	
 }
-
 .smallerHeader {
 	font-size: 16px;
 }
-
 .qaLabel {
 	font-size: 18px;
 	font-weight: bold;
 	text-decoration: underline;
 }
-
 .question {
 	text-indent: 0px;
 	color: red;
 }
-	
 .answer {
 	text-indent: 0px;	
 	color: blue;
 	border-bottom: solid 3px black;
+}
+.counter {
+	position: absolute;
+	bottom: 5px;
+	width: 100%;
+	text-align: center;
 }

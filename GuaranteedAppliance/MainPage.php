@@ -26,8 +26,7 @@
 	<a class="sideTab" href="#" onclick="toggleContentDiv('faqDiv');">FAQ</a>
 
 	<div class="outerContent">
-		<!--<div class="innerContent" id="homeDiv" style="visibility: visible;">-->
-			<div class="innerContent" id="homeDiv">
+			<div class="innerContent" id="homeDiv" style="visibility: visible;">
 			<div style="text-align: center; background-color: blue; display: table; width: 90%; border: black solid 1px; margin-left: 5%; margin-top: 10px;">
 				<img alt="Our Store Front" src="images/home-image.jpg" />
 			</div>
@@ -53,16 +52,14 @@
 <div id="map_canvas" style="width: 625px; height: 500px; border: solid 1px black; margin-left: auto; margin-right: auto;"></div>
 			</div>
 		</div>
-		<div class="innerContent" id="onlineInventoryDiv" style="visibility: visible;">
+		<div class="innerContent" id="onlineInventoryDiv">
 			<table style="width: 100%; height: 75%; text-align: center">
 				<tr>
-					<td style="text-align: center">
-						<img src="images/6.jpg" alt='<?php print $text6; ?>'
-		                        style="border-style: solid;" />
+					<td>
+						<img src="images/6.jpg" alt='<?php print $text6; ?>' />
 					</td>
-					<td style="text-align: center">
-						<img src="images/7.jpg" alt='<?php print $text7; ?>'
-		                        style="border-style: solid;" />
+					<td>
+						<img src="images/7.jpg" alt='<?php print $text7; ?>' />
 					</td>
 				</tr>
 				<tr>
@@ -74,13 +71,11 @@
 					</td>
 				</tr>
 				<tr>
-					<td style="text-align: center">
-						<img src="images/8.jpg" alt='<?php print $text8; ?>'
-		                        style="border-style: solid;" />
-					</td style="text-align: center">
 					<td>
-						<img src="images/9.jpg" alt='<?php print $text9; ?>'
-		                        style="border-style: solid;" />
+						<img src="images/8.jpg" alt='<?php print $text8; ?>' />
+					</td>
+					<td>
+						<img src="images/9.jpg" alt='<?php print $text9; ?>' />
 					</td>
 				</tr>
 				<tr>
@@ -92,13 +87,11 @@
 					</td>
 				</tr>
 				<tr>
-					<td style="text-align: center">
-						<img src="images/10.jpg" alt='<?php print $text10; ?>'
-		                        style="border-style: solid;" />
-					</td style="text-align: center">
 					<td>
-						<img src="images/11.jpg" alt='<?php print $text11; ?>'
-		                        style="border-style: solid;" />
+						<img src="images/10.jpg" alt='<?php print $text10; ?>' />
+					</td>
+					<td>
+						<img src="images/11.jpg" alt='<?php print $text11; ?>' />
 					</td>
 				</tr>
 				<tr>
@@ -110,13 +103,11 @@
 					</td>
 				</tr>
 				<tr>
-					<td style="text-align: center">
-						<img src="images/12.jpg" alt='<?php print $text12; ?>'
-		                        style="border-style: solid;" />
-					</td style="text-align: center">
 					<td>
-						<img src="images/13.jpg" alt='<?php print $text13; ?>'
-		                        style="border-style: solid;" />
+						<img src="images/12.jpg" alt='<?php print $text12; ?>' />
+					</td>
+					<td>
+						<img src="images/13.jpg" alt='<?php print $text13; ?>' />
 					</td>
 				</tr>
 				<tr>
@@ -128,13 +119,11 @@
 					</td>
 				</tr>
 				<tr>
-					<td style="text-align: center">
-						<img src="images/14.jpg" alt='<?php print $text14; ?>'
-		                        style="border-style: solid;" />
-					</td style="text-align: center">
 					<td>
-						<img src="images/15.jpg" alt='<?php print $text15; ?>'
-		                        style="border-style: solid;" />
+						<img src="images/14.jpg" alt='<?php print $text14; ?>' />
+					</td>
+					<td>
+						<img src="images/15.jpg" alt='<?php print $text15; ?>' />
 					</td>
 				</tr>
 				<tr>
@@ -165,8 +154,8 @@ We sell the following quality pre-owned appliances:
 			<div style="white-space:pre; width: 100%;">
 <span class="emphasis smallerHeader">NEW</span>
 
-Additionally, we also sell the following new appliances, by discounted catalog order of brand XXX*:
-<span style="font-style: italic; font-size: 8pt;">*orders take X to Y days to receive appliance</span>
+Additionally, we also sell the following new appliances, by discounted catalog order of brand Crosley*:
+<span style="font-style: italic; font-size: 8pt;">*orders take 3 to 4 days to receive appliance</span>
 			</div>
 			<ul>
 				<li>New Washers</li>
@@ -208,10 +197,48 @@ Additionally, we also sell the following new appliances, by discounted catalog o
 			<p class="answer"><span class="qaLabel">A:</span> There are certain brands we don't want to sell - we know how they're made and can not in good conscience sell them due to thier inferior quality.</p>		
 		</div>
 	</div>
+		<?php print getCounterImages(count(file("log.txt"))); ?>
 </div>
 
 </body>
 <script type="text/javascript">
     $(function() { $('.sideTab').corner(); } );
 </script>
+<?php
+    function getCounterImages($numVisitors){
+	    $numVisitorsStr = (string)$numVisitors;
+	    $array = preg_split('//', $numVisitorsStr, -1, PREG_SPLIT_NO_EMPTY);
+	    $retStr = "<"."div class=\"counter\">\n";
+
+	    foreach($array as $char){
+		    $retStr .= "\t<img alt=\"$char\" src=\"./images/counterimages/$char.jpg\" />\n";
+	    }
+	    $retStr .= "</div\n";
+	
+	    return $retStr;
+    }
+    
+    function checkIP(){
+        $ip = getenv("REMOTE_ADDR");
+        $lines = file("log.txt");
+        foreach($lines as $line){
+            if(strpos($line, $ip) !== false){
+                //print "not adding";
+                return;
+            }
+        }
+        writeIP($ip);
+    }
+
+    function writeIP($ip){ 
+        //print "adding...";
+        
+        $log = "\n$ip"; 
+        $fp = fopen("log.txt", "a"); 
+        fwrite($fp, $log);
+        fclose($fp);
+    }
+    
+    checkIP();
+?>
 </html>
