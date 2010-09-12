@@ -54,86 +54,32 @@
 		</div>
 		<div class="innerContent" id="onlineInventoryDiv">
 			<table style="width: 100%; height: 75%; text-align: center">
+			<?php 
+				$multiRowFormat = "
 				<tr>
 					<td>
-						<img src="images/6.jpg" alt='<?php print $text6; ?>' />
+						<img class=\"border\" src=\"images/%s.jpg\" alt='\$text%s' />
 					</td>
 					<td>
-						<img src="images/7.jpg" alt='<?php print $text7; ?>' />
+						<img class=\"border\" src=\"images/%s.jpg\" alt='\$text%s' />
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<?php print $text6; ?>
+						%s
 					</td>
 					<td>
-						<?php print $text7; ?>
+						%s
 					</td>
 				</tr>
-				<tr>
-					<td>
-						<img src="images/8.jpg" alt='<?php print $text8; ?>' />
-					</td>
-					<td>
-						<img src="images/9.jpg" alt='<?php print $text9; ?>' />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php print $text8; ?>
-					</td>
-					<td>
-						<?php print $text9; ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<img src="images/10.jpg" alt='<?php print $text10; ?>' />
-					</td>
-					<td>
-						<img src="images/11.jpg" alt='<?php print $text11; ?>' />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php print $text10; ?>
-					</td>
-					<td>
-						<?php print $text11; ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<img src="images/12.jpg" alt='<?php print $text12; ?>' />
-					</td>
-					<td>
-						<img src="images/13.jpg" alt='<?php print $text13; ?>' />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php print $text12; ?>
-					</td>
-					<td>
-						<?php print $text13; ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<img src="images/14.jpg" alt='<?php print $text14; ?>' />
-					</td>
-					<td>
-						<img src="images/15.jpg" alt='<?php print $text15; ?>' />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php print $text14; ?>
-					</td>
-					<td>
-						<?php print $text15; ?>
-					</td>
-				</tr>
+				";
+
+				$textArray = array(6 => $text6,7 => $text7,8 => $text8,9 => $text9,10 => $text10,11 => $text11,12 => $text12,13 => $text13,14 => $text14,15 => $text15);
+				
+				for ($iRows = 6; $iRows < 16; $iRows += 2 ) {
+					printf($multiRowFormat, $iRows, $textArray[$iRows],$iRows + 1, $textArray[$iRows + 1], $textArray[$iRows], $textArray[$iRows + 1]);
+				}
+			?>
 			</table>		
 		</div>
 		<div class="innerContent" id="salesContentDiv">
