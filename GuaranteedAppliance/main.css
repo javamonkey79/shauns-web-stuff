@@ -12,7 +12,7 @@ td {
 	text-align: center;	
 }
 .border {
-	border-style: none;	
+	border-style: solid;	
 }
 .main {
 	border: black 1px solid;
