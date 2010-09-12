@@ -2,8 +2,8 @@
 .main {
 	border: black 1px solid;
 	position: absolute;
-	height: 1000px;
-	width: 900px;
+	height: 1600px;
+	width: 1000px;
 	display: table-cell;
 	vertical-align: middle;
 	left: 50%;
@@ -12,7 +12,7 @@
 
 .header {
 	border: black 1px solid;
-	height: 10%;
+	height: 150px;
 	width: 80%;
 	margin-top: 10px;
 	margin-left: auto;
@@ -36,11 +36,11 @@
 }
 
 .outerContent {
-	border: black 1px solid;
+	//border: black 1px solid;
 	position: absolute;
-	height: 75%;
+	height: 1400px;
 	width: 75%;
-	top: 150px;
+	top: 200px;
 	right: 30px;
 }
 
