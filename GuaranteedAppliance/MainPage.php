@@ -15,7 +15,7 @@
 <body onload="initializeMap()">
 <div class="main">
 	<div class="header">
-	Header!
+		<img src="images/stamp1.jpg" alt="Guaranteed">
 	</div>
 
 	<a class="sideTab" href="#" onclick="toggleContentDiv('homeDiv');">Home</a>
@@ -24,18 +24,30 @@
 	<a class="sideTab" href="#" onclick="toggleContentDiv('salesContentDiv');">Sales</a>
 	<a class="sideTab" href="#" onclick="toggleContentDiv('repairsDiv');">Service & Repairs</a>
 	<a class="sideTab" href="#" onclick="toggleContentDiv('faqDiv');">FAQ</a>
+	<img class="sideTabImage" alt="credit accepted" src="images/visamasteramex.gif">
 
 	<div class="outerContent">
 			<div class="innerContent" id="homeDiv" style="visibility: visible;">
-			<div style="text-align: center; background-color: blue; display: table; width: 90%; border: black solid 1px; margin-left: 5%; margin-top: 10px;">
-				<img alt="Our Store Front" src="images/home-image.jpg" />
-			</div>
+				<div class="homeImageWrapper">
+					<img class="border" alt="Our Store Front" src="images/home-image.jpg" />
+				</div>
 			<p>
 				Welcome to Guaranteed Applicance Spokane! At Guaranteed Applicance Spokane we believe in honesty, quality
-				and fair prices. We don't like to sell junk! blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah  		
+				and fair prices. We don't like to sell junk! We are a family owned and operated business that specializes in appliance sales and service.
+				Our company sells new and used appliances at great prices. Service calls are available
+				as well as in-shop repairs. Delivery is available upon request as well as removal or your
+				old appliance. We will never ask you to bring in a competitor's business card or coupon to
+				recieve a discount. Our goal is to help you with your appliance needs without jumping through
+				unnecessary hoops. 
 			</p>
 			<p>
-				blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+				We are always looking for good used appliances that are working or not. Drop off your old appliance
+				is okay upon approval only. Will also do curb-side or drive-way pick up in the Spokane area. Also 
+				available are new and used parts. It is our mission to provide hassle free and friendly service as
+				we want you as a return customer. Feel free to check us out on the Better Business Bureau website. 
+				The repairman on staff is a E.P.A. certified technician that holds a Refrigeration/Air Conditioning
+				and Appliance Repair Certification. Come in and let us help you find what your looking for. We look
+				forward to serving you. 
 			</p>
 		</div>
 		<div class="innerContent" id="hoursAndLocationDiv" >
@@ -100,7 +112,7 @@ We sell the following quality pre-owned appliances:
 			<div style="white-space:pre; width: 100%;">
 <span class="emphasis smallerHeader">NEW</span>
 
-Additionally, we also sell the following new appliances, by discounted catalog order of brand Crosley*:
+We sell the following quality Crosley appliances, by discounted catalog order*:
 <span style="font-style: italic; font-size: 8pt;">*orders take 3 to 4 days to receive appliance</span>
 			</div>
 			<ul>
@@ -115,8 +127,8 @@ Additionally, we also sell the following new appliances, by discounted catalog o
 <span class="emphasis smallHeader">SERVICE & REPAIRS</span>
 			</div>
 			
-			<p>We offer services on the following appliances for the low rate of <span class="emphasis">$45 for the first hour and $X each additional, plus parts</span>. Bring it to us, or we can come to you, either way we can get it done!</p>
-			<p style="text-indent: 0px;">Our expert, certified E.P.A. technician with over 25 years of experience can do the following:</p>
+			<p>We offer services on the following appliances for the low rate of <span class="emphasis">$45 for the first hour and $40 each additional, plus parts</span>. Bring it to us, or we can come to you, either way we can get it done!</p>
+			<p style="text-indent: 0px;">We can do the following:</p>
 			<ul>
 				<li>Washer Repairs</li>
 				<li>Dryer Repairs</li>
@@ -140,7 +152,7 @@ Additionally, we also sell the following new appliances, by discounted catalog o
 			<p class="answer"><span class="qaLabel">A:</span> Simple. Big box stores and larger local retailers have higher costs and higher overhead. We don't have big showrooms or large fleets, instead we pass the savings off to you.</p> 
 		
 			<p class="question"><span class="qaLabel">Q:</span> How come you don't offer all brands of new appliances?</p>
-			<p class="answer"><span class="qaLabel">A:</span> There are certain brands we don't want to sell - we know how they're made and can not in good conscience sell them due to thier inferior quality.</p>		
+			<p class="answer"><span class="qaLabel">A:</span> There are 3 main reasons: 1) There are certain brands we don't want to sell - we know how they're made and can not in good conscience sell them due to thier inferior quality. 3) Crosley appliances come with a 10 year warranty. 2) Most other brands don't offer sales in small quantities - they only want big box customers, not small retailers.</p>		
 		</div>
 	</div>
 		<?php print getCounterImages(count(file("log.txt"))); ?>
@@ -157,9 +169,9 @@ Additionally, we also sell the following new appliances, by discounted catalog o
 	    $retStr = "<"."div class=\"counter\">\n";
 
 	    foreach($array as $char){
-		    $retStr .= "\t<img alt=\"$char\" src=\"./images/counterimages/$char.jpg\" />\n";
+		    $retStr .= "\t\t\t<img class=\"counterImages\" alt=\"$char\" src=\"./images/counterimages/$char.jpg\" />\n";
 	    }
-	    $retStr .= "</div\n";
+	    $retStr .= "\t\t</div>\n";
 	
 	    return $retStr;
     }
@@ -169,7 +181,6 @@ Additionally, we also sell the following new appliances, by discounted catalog o
         $lines = file("log.txt");
         foreach($lines as $line){
             if(strpos($line, $ip) !== false){
-                //print "not adding";
                 return;
             }
         }
@@ -177,8 +188,6 @@ Additionally, we also sell the following new appliances, by discounted catalog o
     }
 
     function writeIP($ip){ 
-        //print "adding...";
-        
         $log = "\n$ip"; 
         $fp = fopen("log.txt", "a"); 
         fwrite($fp, $log);
