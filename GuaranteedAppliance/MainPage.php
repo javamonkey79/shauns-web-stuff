@@ -17,7 +17,7 @@
 	<div class="header">
 		<img src="images/common/header.jpg" alt="Guaranteed">
 		<span class="phoneNumbers">
-~SHOP: (509) 928-3368~	~CELL: (509) 218-4683~
+~MAIN: (509) 928-3368~	~CELL: (509) 218-4683~
 		</span>
 	</div>
 
@@ -36,22 +36,27 @@
 					<img class="border" style="" alt="Our Store Front" src="images/common/home-image.jpg" />
 				</div>
 			<p>
-				Welcome to Guaranteed Applicance Spokane! At Guaranteed Applicance Spokane we believe in honesty, quality
-				and fair prices. We don't like to sell junk! We are a family owned and operated business that specializes in appliance sales and service.
-				Our company sells new and used appliances at great prices. Service calls are available
-				as well as in-shop repairs. Delivery is available upon request as well as removal or your
-				old appliance. We will never ask you to bring in a competitor's business card or coupon to
-				recieve a discount. Our goal is to help you with your appliance needs without jumping through
-				unnecessary hoops. 
+				Welcome to Guaranteed Applicance Sales and Service! At Guaranteed Applicance Spokane we believe in honesty, quality
+				and fair prices. We are a family owned and operated business that specializes in appliance sales and service.
+				It is our mission to provide you with superior products and services in a hassle free, friendly environment.
 			</p>
 			<p>
-				We are always looking for good used appliances that are working or not. Drop off your old appliance
-				is okay upon approval only. Will also do curb-side or drive-way pick up in the Spokane area. Also 
-				available are new and used parts. It is our mission to provide hassle free and friendly service as
-				we want you as a return customer. Feel free to check us out on the Better Business Bureau website. 
-				The repairman on staff is a E.P.A. certified technician that holds a Refrigeration/Air Conditioning
-				and Appliance Repair Certification. Come in and let us help you find what your looking for. We look
-				forward to serving you. 
+				We know that you work hard for what you have, so we don't want you to waste your hard earned dollars on something that will
+				"just get you through" or something that will fall apart as soon as you get it home. We don't like to sell junk! 
+				We sell new and used appliances at great prices. We also do service calls as well as in-shop repairs. 
+				Delivery is available upon request as well as removal or your old appliance. 
+			</p>
+			<p>				
+				We will never ask you to bring in a competitor's business card or come in on special days to
+				recieve a discount. Our goal is to help you with your appliance needs without jumping through
+				unnecessary hoops. Feel free to check out our <span class="emphasis">"A"</span> rating on the <a target="_blank" href="http://www.bbb.org/eastern-washington/business-reviews/appliances-major-dealers/guaranteed-appliance-sales-service-in-spokane-valley-wa-27000348/">Better Business Bureau</a> website.
+			</p>
+			<p>				
+				You can take confidence in our expert technician. He has over 30 years of experience, E.P.A. refrigeration certification as well as Appliance Repair Certification.
+				In addition, all sales come with a written warranty - this is the "guarantee" in Guaranteed Appliance. 
+			</p>
+			<p>
+				<span style="font-weight: bold;">Come in and let us help you find what your looking for. We look forward to serving you!</span>
 			</p>
 		</div>
 		<div class="innerContent" id="hoursAndLocationDiv" >
@@ -112,18 +117,20 @@ We sell the following quality pre-owned appliances:
 				<li>Used Refrigerators</li>
 				<li>Used Ovens</li>
 				<li>Used Microwaves (not always in stock, please call)</li>
+				<li>Used Appliance Parts</li>
 			</ul>
 			<div style="white-space:pre; width: 100%;">
 <span class="emphasis smallerHeader">NEW</span>
 
 We sell the following quality Crosley appliances, by discounted catalog order*:
-<span style="font-style: italic; font-size: 8pt;">*orders take 3 to 4 days to receive appliance</span>
+<span style="font-style: italic; font-size: 8pt;">*orders may take 3 to 4 days to receive appliance</span>
 			</div>
 			<ul>
 				<li>New Washers</li>
 				<li>New Dryers</li>
 				<li>New Refrigerators</li>
 				<li>New Ovens</li>
+				<li>New Appliance Parts</li>
 			</ul> 
 		</div>
 		<div class="innerContent" id="repairsDiv">
@@ -156,7 +163,16 @@ We sell the following quality Crosley appliances, by discounted catalog order*:
 			<p class="answer"><span class="qaLabel">A:</span> Simple. Big box stores and larger local retailers have higher costs and higher overhead. We don't have big showrooms or large fleets, instead we pass the savings off to you.</p> 
 		
 			<p class="question"><span class="qaLabel">Q:</span> How come you don't offer all brands of new appliances?</p>
-			<p class="answer"><span class="qaLabel">A:</span> There are 3 main reasons: 1) There are certain brands we don't want to sell - we know how they're made and can not in good conscience sell them due to thier inferior quality. 3) Crosley appliances come with a 10 year warranty. 2) Most other brands don't offer sales in small quantities - they only want big box customers, not small retailers.</p>		
+			<p class="answer"><span class="qaLabel">A:</span> There are 3 main reasons: 1) There are certain brands we don't want to sell - we know how they're made and can not in good conscience sell them due to thier inferior quality. 3) Crosley appliances come with a <span class="emphasis">10 year warranty.</span> 2) Most other brands don't offer sales in small quantities - they only want big box customers, not small retailers.</p>
+			
+			<p class="question"><span class="qaLabel">Q:</span> Do you accept old\unwanted appliances?</p>
+			<p class="answer"><span class="qaLabel">A:</span> We are always looking for good used appliances that are working or not.</p>
+					
+			<p class="question"><span class="qaLabel">Q:</span> Can I drop off my old\unwanted appliances?</p>
+			<p class="answer"><span class="qaLabel">A:</span> Please call for approval.</p>			
+			
+			<p class="question"><span class="qaLabel">Q:</span> Will you pick up my old\unwanted appliances?</p>
+			<p class="answer"><span class="qaLabel">A:</span> We will gladly do curb-side or drive-way pick up in the Spokane area on approved appliances.</p>			
 		</div>
 	</div>
 		<?php print getCounterImages(count(file("log.txt"))); ?>
