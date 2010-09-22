@@ -15,21 +15,25 @@
 <body onload="initializeMap()">
 <div class="main">
 	<div class="header">
-		<img src="images/stamp1.jpg" alt="Guaranteed">
+		<img src="images/common/header.jpg" alt="Guaranteed">
+		<span class="phoneNumbers">
+~SHOP: (509) 928-3368~	~CELL: (509) 218-4683~
+		</span>
 	</div>
 
-	<a class="sideTab" href="#" onclick="toggleContentDiv('homeDiv');">Home</a>
-	<a class="sideTab" href="#" onclick="toggleContentDiv('hoursAndLocationDiv');">Hours & Location</a>
-	<a class="sideTab" href="#" onclick="toggleContentDiv('onlineInventoryDiv');">Online Inventory</a>
-	<a class="sideTab" href="#" onclick="toggleContentDiv('salesContentDiv');">Sales</a>
-	<a class="sideTab" href="#" onclick="toggleContentDiv('repairsDiv');">Service & Repairs</a>
-	<a class="sideTab" href="#" onclick="toggleContentDiv('faqDiv');">FAQ</a>
-	<img class="sideTabImage" alt="credit accepted" src="images/visamasteramex.gif">
+	<a class="sideTab rounded" href="#" onclick="toggleContentDiv('homeDiv');">Home</a>
+	<a class="sideTab rounded" href="#" onclick="toggleContentDiv('hoursAndLocationDiv');">Hours & Location</a>
+	<a class="sideTab rounded" href="#" onclick="toggleContentDiv('onlineInventoryDiv');">Online Inventory</a>
+	<a class="sideTab rounded" href="#" onclick="toggleContentDiv('salesContentDiv');">Sales</a>
+	<a class="sideTab rounded" href="#" onclick="toggleContentDiv('repairsDiv');">Service & Repairs</a>
+	<a class="sideTab rounded" href="#" onclick="toggleContentDiv('faqDiv');">FAQ</a>
+	<img class="side" alt="credit accepted" src="images/common/visamasteramex.gif" />
+	<a class="side" href="http://www.cashforapplianceswa.com" target="_blank"><img style="border: none;" src="images/common/CashforAppliances.jpg" alt="Cash for Appliances - Washington" /></a>
 
 	<div class="outerContent">
 			<div class="innerContent" id="homeDiv" style="visibility: visible;">
 				<div class="homeImageWrapper">
-					<img class="border" alt="Our Store Front" src="images/home-image.jpg" />
+					<img class="border" style="" alt="Our Store Front" src="images/common/home-image.jpg" />
 				</div>
 			<p>
 				Welcome to Guaranteed Applicance Spokane! At Guaranteed Applicance Spokane we believe in honesty, quality
@@ -70,10 +74,10 @@
 				$multiRowFormat = "
 				<tr>
 					<td>
-						<img class=\"border\" src=\"images/%s.jpg\" alt='\$text%s' />
+						<img class=\"border\" src=\"images/inventory/%s.jpg\" alt='%s' />
 					</td>
 					<td>
-						<img class=\"border\" src=\"images/%s.jpg\" alt='\$text%s' />
+						<img class=\"border\" src=\"images/inventory/%s.jpg\" alt='%s' />
 					</td>
 				</tr>
 				<tr>
@@ -143,7 +147,7 @@ We sell the following quality Crosley appliances, by discounted catalog order*:
 			</div>
 			
 			<p class="question"><span class="qaLabel">Q:</span> Why should I buy from you and not someone on Craigslist, in a newspaper, garage sale, etc.?</p>
-			<p class="answer"><span class="qaLabel">A:</span> When you buy appliances this way you get what you pay for. Sometimes you might get a good deal, but more often than not you're buying someone else's problem. Our appliances are quality refurbished machines; cleaned, inspected and rebuilt with quality parts.</p>
+			<p class="answer"><span class="qaLabel">A:</span> When you buy appliances this way you get what you pay for. Sometimes you will get a good deal, but more often than not you're buying someone else's problem. Our appliances are quality refurbished machines; cleaned, inspected and rebuilt with quality parts.</p>
 			   
 			<p class="question"><span class="qaLabel">Q:</span> Why should I buy from you and not one of the other local used appliance shops?</p>
 			<p class="answer"><span class="qaLabel">A:</span> We're passionate about quality. We don't always have $100 appliances for a good reason - they tend to be beat up and fall apart. We provide a written guarantee with every sell, but most of the time it is never needed!</p>
@@ -160,7 +164,7 @@ We sell the following quality Crosley appliances, by discounted catalog order*:
 
 </body>
 <script type="text/javascript">
-    $(function() { $('.sideTab').corner(); } );
+    $(function() { $('.rounded').corner(); } );
 </script>
 <?php
     function getCounterImages($numVisitors){
