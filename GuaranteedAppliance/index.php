@@ -36,7 +36,7 @@
 					<img class="border" style="" alt="Our Store Front" src="images/common/home-image.jpg" />
 				</div>
 			<p>
-				Welcome to Guaranteed Appliance Sales and Service! At Guaranteed Applicance we believe in honesty, quality
+				Welcome to Guaranteed Appliance Sales and Service! At Guaranteed Appliance we believe in honesty, quality
 				and fair prices. We are a family owned and operated business that specializes in appliance sales and service.
 				It is our mission to provide you with superior products and services in a hassle free, friendly environment.
 			</p>
