@@ -36,7 +36,7 @@
 					<img class="border" style="" alt="Our Store Front" src="images/common/home-image.jpg" />
 				</div>
 			<p>
-				Welcome to Guaranteed Applicance Sales and Service! At Guaranteed Applicance Spokane we believe in honesty, quality
+				Welcome to Guaranteed Appliance Sales and Service! At Guaranteed Applicance we believe in honesty, quality
 				and fair prices. We are a family owned and operated business that specializes in appliance sales and service.
 				It is our mission to provide you with superior products and services in a hassle free, friendly environment.
 			</p>
@@ -44,11 +44,11 @@
 				We know that you work hard for what you have, so we don't want you to waste your hard earned dollars on something that will
 				"just get you through" or something that will fall apart as soon as you get it home. We don't like to sell junk! 
 				We sell new and used appliances at great prices. We also do service calls as well as in-shop repairs. 
-				Delivery is available upon request as well as removal or your old appliance. 
+				Delivery is available upon request as well as removal of your old appliance. 
 			</p>
 			<p>				
 				We will never ask you to bring in a competitor's business card or come in on special days to
-				recieve a discount. Our goal is to help you with your appliance needs without jumping through
+				receive a discount. Our goal is to help you with your appliance needs without jumping through
 				unnecessary hoops. Feel free to check out our <span class="emphasis">"A"</span> rating on the <a target="_blank" href="http://www.bbb.org/eastern-washington/business-reviews/appliances-major-dealers/guaranteed-appliance-sales-service-in-spokane-valley-wa-27000348/">Better Business Bureau</a> website.
 			</p>
 			<p>				
@@ -64,12 +64,13 @@
 <span class="emphasis smallHeader">STORE HOURS</span>
 
 <span class="emphasis">Monday-Friday:</span> 9am-5pm
-<span class="emphasis">Saturday:</span> 10am-1pm [optional: not open EVERY Saturday, please call]
+<span class="emphasis">Saturday:</span> 10am-3pm [optional: not open EVERY Saturday, please call]
 <span class="emphasis">Sunday:</span> Closed 
 			</div>
 			<div style="white-space:pre; margin-top: 10px;">
 <span class="emphasis smallHeader">LOCATION</span>
 
+<div style="text-align: center; font-weight: bold;">7509 E. TRENT SPOKANE VALLEY, WA. 99212</div>
 <div id="map_canvas" style="width: 625px; height: 500px; border: solid 1px black; margin-left: auto; margin-right: auto;"></div>
 			</div>
 		</div>
@@ -138,7 +139,7 @@ We sell the following quality Crosley appliances, by discounted catalog order*:
 <span class="emphasis smallHeader">SERVICE & REPAIRS</span>
 			</div>
 			
-			<p>We offer services on the following appliances for the low rate of <span class="emphasis">$45 for the first hour and $40 each additional, plus parts</span>. Bring it to us, or we can come to you, either way we can get it done!</p>
+			<p>We offer appliance service and repair for the low rate of <span class="emphasis">$40 per hour plus parts.</span> Service calls are $45 for the first hour and in shop estimates are $20. Bring it to us, or we can come to you, either way we can get it done!</p>
 			<p style="text-indent: 0px;">We can do the following:</p>
 			<ul>
 				<li>Washer Repairs</li>
