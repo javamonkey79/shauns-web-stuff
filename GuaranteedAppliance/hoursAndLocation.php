@@ -1,9 +1,9 @@
 <?php
-    $noscript = false;
-    $redirect = true;
+    $noscript = true;
+    $redirect = false;
     
-    $homeActive = true;
-    $hoursAndLocationActive = false;
+    $homeActive = false;
+    $hoursAndLocationActive = true;
     $onlineInventoryActive = false;
     $salesActive = false;
     $repairsActive = false;

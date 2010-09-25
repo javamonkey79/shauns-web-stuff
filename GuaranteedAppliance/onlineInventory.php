@@ -1,10 +1,10 @@
 <?php
-    $noscript = false;
-    $redirect = true;
+    $noscript = true;
+    $redirect = false;
     
-    $homeActive = true;
+    $homeActive = false;
     $hoursAndLocationActive = false;
-    $onlineInventoryActive = false;
+    $onlineInventoryActive = true;
     $salesActive = false;
     $repairsActive = false;
     $faqActive = false;

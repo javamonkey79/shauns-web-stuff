@@ -1,12 +1,12 @@
 <?php
-    $noscript = false;
-    $redirect = true;
+    $noscript = true;
+    $redirect = false;
     
-    $homeActive = true;
+    $homeActive = false;
     $hoursAndLocationActive = false;
     $onlineInventoryActive = false;
     $salesActive = false;
-    $repairsActive = false;
+    $repairsActive = true;
     $faqActive = false;
     
     include("./main.php");
