@@ -1,33 +1,40 @@
 @CHARSET "ISO-8859-1";
+
 p {
-	text-indent:50px;
+	text-indent: 50px;
 	width: 90%;
 	margin-left: 5%;
 }
 
 li {
-	margin-top: 30px;	
+	margin-top: 30px;
 }
+
 td {
-	text-align: center;	
+	text-align: center;
 }
+
 body {
-	background-color: black;	
+	font-family: sans-serif;
+	background-color: black;
 }
+
 .border {
-	border-style: solid;	
+	border-style: solid;
 }
+
 .main {
 	background-color: white;
 	border: black 1px solid;
 	position: absolute;
-	height: 1750px;
+	height: 1100px;
 	width: 1000px;
 	display: table-cell;
 	vertical-align: middle;
 	left: 50%;
 	margin-left: -450px;
 }
+
 .header {
 	border: solid 4px #005825;
 	height: 150px;
@@ -37,6 +44,7 @@ body {
 	margin-right: auto;
 	text-align: center;
 }
+
 .sideTab {
 	background-color: #005825;
 	border: black 1px solid;
@@ -53,15 +61,18 @@ body {
 	text-decoration: none;
 	font-size: 14pt;
 	font-weight: bold;
+	color: white;
 }
+
 .side {
 	display: table;
 	position: relative;
 	top: 60px;
 	left: 25px;
 	margin-top: 5px;
-	border: black 1px soild;	
+	border: black 1px solid;
 }
+
 .outerContent {
 	position: absolute;
 	height: 1400px;
@@ -69,41 +80,50 @@ body {
 	top: 220px;
 	right: 30px;
 }
+
 .innerContent {
 	position: absolute;
 	visibility: hidden;
 	width: 100%;
 }
+
 .emphasis {
 	font-weight: bold;
-	text-decoration: underline;	
+	text-decoration: underline;
 }
+
 .smallHeader {
-	font-size: 20px;	
+	font-size: 20px;
 }
+
 .smallerHeader {
 	font-size: 16px;
 }
+
 .qaLabel {
 	font-size: 18px;
 	font-weight: bold;
 	text-decoration: underline;
 }
+
 .question {
 	text-indent: 0px;
 	color: red;
 }
+
 .answer {
-	text-indent: 0px;	
+	text-indent: 0px;
 	color: blue;
 	border-bottom: solid 3px black;
 }
+
 .counter {
 	position: absolute;
 	bottom: 5px;
 	width: 100%;
 	text-align: center;
 }
+
 .counterImages {
 	display: table-cell;
 	position: relative;
@@ -111,13 +131,15 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 }
+
 .homeImageWrapper {
 	background-color: #005825;
 	text-align: center;
 	display: table;
 	margin: auto;
-	margin-top: 10px;	
+	margin-top: 10px;
 }
+
 .phoneNumbers {
 	margin-top: 5px;
 	white-space: pre;

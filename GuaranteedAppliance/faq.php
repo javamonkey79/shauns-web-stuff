@@ -1,13 +1,13 @@
 <?php
-    $noscript = false;
-    $redirect = true;
-    
-    $homeActive = true;
+	$noscript = true;
+    $redirect = false;	
+
+    $homeActive = false;
     $hoursAndLocationActive = false;
     $onlineInventoryActive = false;
     $salesActive = false;
     $repairsActive = false;
-    $faqActive = false;
+    $faqActive = true;
     
     include("./main.php");
 ?>

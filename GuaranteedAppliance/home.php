@@ -1,6 +1,6 @@
 <?php
-    $noscript = false;
-    $redirect = true;
+    $noscript = true;
+    $redirect = false;
     
     $homeActive = true;
     $hoursAndLocationActive = false;
