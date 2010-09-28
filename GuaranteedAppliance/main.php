@@ -5,6 +5,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="keywords" content="spokane refrigerator, spokane appliance, spokane freezers, spokane refrigerator freezer, used appliances spokane, christian appliance spokane, guaranteed appliance, guaranteed used appliance, appliance repair Spokane, appliance service Spokane, stove repair Spokane, washer repair Spokane, dryer repair Spokane" />
+<meta name="description" content="Spokane's best value for quality used appliances and Repairs" />
+<meta name="google-site-verification" content="KFh8hptPDTlMx6MmJ-hX-MfHdURuK7cwQ6pxc-iB0BE" />
 <link rel="stylesheet" href="main.css" type="text/css" />
 <script type="text/javascript" src="javascript/jquery.js"></script>
 <script type="text/javascript" src="javascript/jquery.corner.js"></script>
@@ -210,7 +213,7 @@ We sell the following quality Crosley appliances, by discounted catalog order*:
 			</div>
 			
 			<p class="question"><span class="qaLabel">Q:</span> Why should I buy from you and not someone on Craigslist, in a newspaper, garage sale, etc.?</p>
-			<p class="answer"><span class="qaLabel">A:</span> When you buy appliances this way you get what you pay for. Sometimes you will get a good deal, but more often than not you're buying someone else's problem. Our appliances are quality refurbished machines; cleaned, inspected and rebuilt with quality parts.</p>
+			<p class="answer"><span class="qaLabel">A:</span> When you buy appliances this way you get what you pay for. Sometimes you will get a good deal, but more often than not you're buying someone else's problem. Our appliances are quality rebuilt machines; cleaned, inspected and rebuilt with quality parts.</p>
 			   
 			<p class="question"><span class="qaLabel">Q:</span> Why should I buy from you and not one of the other local used appliance shops?</p>
 			<p class="answer"><span class="qaLabel">A:</span> We're passionate about quality. We don't always have $100 appliances for a good reason - they tend to be beat up and fall apart. We provide a written guarantee with every sell, but most of the time it is never needed!</p>
