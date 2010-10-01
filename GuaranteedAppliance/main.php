@@ -1,5 +1,12 @@
 <?php
     include("./specials text.php");
+
+    $userAgent = $_SERVER[ 'HTTP_USER_AGENT' ];
+    if( strpos( $userAgent, "MSIE" ) != 0 ) {
+    	$browser = "IE";
+    } else {
+    	$browser = "Non-IE";
+    }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -32,16 +39,28 @@
 >
 	<div class="header">
 		<img src="images/common/header.jpg" alt="Guaranteed">
-		<span class="phoneNumbers">
+		<?php
+			if( $browser == "IE" ) {
+				print "
+		<div class=\"phoneNumbers\">
+~MAIN: (509) 928-3368~	~CELL: (509) 218-4683~
+		</div>
+				";
+			} else {
+				print "
+		<span class=\"phoneNumbers\">
 ~MAIN: (509) 928-3368~	~CELL: (509) 218-4683~
 		</span>
+				";				
+			}
+		?>
 	</div>
 
 	<a class="sideTab rounded" href="<?php if( !$noscript ) { print "#"; } else { print "home.php"; }?>" onclick="toggleContentDiv('homeDiv');">Home</a>
-	<a class="sideTab rounded" href="<?php if( !$noscript ) { print "#"; } else { print "hoursAndLocation.php"; }?>" onclick="toggleContentDiv('hoursAndLocationDiv');">Hours & Location</a>
+	<a class="sideTab rounded" href="<?php if( !$noscript ) { print "#"; } else { print "hoursAndLocation.php"; }?>" onclick="toggleContentDiv('hoursAndLocationDiv');">Hours &amp; Location</a>
 	<a class="sideTab rounded" href="<?php if( !$noscript ) { print "#"; } else { print "onlineInventory.php"; }?>" onclick="toggleContentDiv('onlineInventoryDiv');">Online Inventory</a>
 	<a class="sideTab rounded" href="<?php if( !$noscript ) { print "#"; } else { print "sales.php"; }?>" onclick="toggleContentDiv('salesContentDiv');">Sales</a>
-	<a class="sideTab rounded" href="<?php if( !$noscript ) { print "#"; } else { print "repairs.php"; }?>" onclick="toggleContentDiv('repairsDiv');">Service & Repairs</a>
+	<a class="sideTab rounded" href="<?php if( !$noscript ) { print "#"; } else { print "repairs.php"; }?>" onclick="toggleContentDiv('repairsDiv');">Service &amp; Repairs</a>
 	<a class="sideTab rounded" href="<?php if( !$noscript ) { print "#"; } else { print "faq.php"; }?>" onclick="toggleContentDiv('faqDiv');">FAQ</a>
 	<img class="side" alt="credit accepted" src="images/common/visamasteramex.gif" />
 	<a class="side" href="http://www.cashforapplianceswa.com" target="_blank"><img style="border: none;" src="images/common/CashforAppliances.jpg" alt="Cash for Appliances - Washington" /></a>
@@ -102,7 +121,8 @@
 <div id="map_canvas" style="width: 625px; height: 500px; border: solid 1px black; margin-left: auto; margin-right: auto;">
 <?php 
 	if( $noscript ) {
-		print "<img src=\"images/common/map.gif\" />";
+		//print "<img src=\"images/common/map.gif\" />";
+		print "<img src=\"http://maps.google.com/maps/api/staticmap?size=625x500&sensor=false&center=47.676905,-117.303324&zoom=13&markers=47.676905,-117.303324\" />";
 	}
 ?>
 </div>
@@ -188,7 +208,7 @@ We sell the following quality Crosley appliances, by discounted catalog order*:
 			?>		
 		>
 			<div style="white-space:pre; width: 100%;">
-<span class="emphasis smallHeader">SERVICE & REPAIRS</span>
+<span class="emphasis smallHeader">SERVICE &amp; REPAIRS</span>
 			</div>
 			
 			<p>We offer appliance service and repair for the low rate of <span class="emphasis">$40 per hour plus parts.</span> Service calls are $45 for the first hour and in shop estimates are $20. Bring it to us, or we can come to you, either way we can get it done!</p>
@@ -245,7 +265,7 @@ We sell the following quality Crosley appliances, by discounted catalog order*:
     function getCounterImages($numVisitors){
 	    $numVisitorsStr = (string)$numVisitors;
 	    $array = preg_split('//', $numVisitorsStr, -1, PREG_SPLIT_NO_EMPTY);
-	    $retStr = "<"."div class=\"counter\">\n";
+	    $retStr = "<div class=\"counter\">\n";
 
 	    foreach($array as $char){
 		    $retStr .= "\t\t\t<img class=\"counterImages\" alt=\"$char\" src=\"./images/counterimages/$char.jpg\" />\n";
