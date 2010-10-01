@@ -125,7 +125,6 @@ body {
 }
 
 .counterImages {
-	display: table-cell;
 	position: relative;
 	padding: 0px;
 	margin-left: auto;
