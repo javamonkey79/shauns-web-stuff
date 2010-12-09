@@ -63,8 +63,6 @@
 	<a class="sideTab rounded" href="<?php if( !$noscript ) { print "#"; } else { print "repairs.php"; }?>" onclick="toggleContentDiv('repairsDiv');">Service &amp; Repairs</a>
 	<a class="sideTab rounded" href="<?php if( !$noscript ) { print "#"; } else { print "faq.php"; }?>" onclick="toggleContentDiv('faqDiv');">FAQ</a>
 	<img class="side" alt="credit accepted" src="images/common/visamasteramex.gif" />
-	<a class="side" href="http://www.cashforapplianceswa.com" target="_blank"><img style="border: none;" src="images/common/CashforAppliances.jpg" alt="Cash for Appliances - Washington" /></a>
-
 	<div class="outerContent">
 			<div class="innerContent" id="homeDiv" 
 			<?php 
