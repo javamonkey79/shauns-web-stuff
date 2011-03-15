@@ -1,0 +1,25 @@
+{"position":180,"id":119667} 0, 6
+{"position":166,"id":119100} 16, 5
+{"position":167,"id":119513} 17, 5
+
+
+<e class="object">
+		<data class="object">
+			<mountain_pos type="number">146</mountain_pos>
+			<mountain_tile_id type="number">3051106</mountain_tile_id>
+			<mountain_tile_pos type="number">13</mountain_tile_pos>
+			<survey class="array">
+				<e type="string">GoldMine</e>
+				<e type="string">IronMine</e>
+				<e type="string">PrimordialWaterMine</e>
+				<e type="string">PrimordialFireMine</e>
+				<e type="string">DeepOchreMine</e>
+				<e type="string">GoldMine</e>
+			</survey>
+		</data>
+		<dungeon type="string">ABANDONED_DUNGEON</dungeon>
+		<dungeon_id type="number">64876</dungeon_id>
+		<id type="number">9301645</id>
+		<timestamp type="number">1297980953032</timestamp>
+		<type type="string">Survey</type>
+	</e>

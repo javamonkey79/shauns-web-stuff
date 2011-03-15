@@ -1,0 +1,193 @@
+<surveys>
+
+<e class="object">
+		<data class="object">
+			<mountain_pos type="number">46</mountain_pos>
+			<mountain_tile_id type="number">3057751</mountain_tile_id>
+			<mountain_tile_pos type="number">9</mountain_tile_pos>
+			<survey class="array">
+				<e type="string">IronMine</e>
+				<e type="string">PrimordialFireMine</e>
+				<e type="string">GoldMine</e>
+			</survey>
+		</data>
+		<dungeon type="string">Ogdenville</dungeon>
+		<dungeon_id type="number">108714</dungeon_id>
+		<id type="number">20304396</id>
+		<timestamp type="number">1300091008353</timestamp>
+		<type type="string">Survey</type>
+	</e>
+<e class="object">
+		<data class="object">
+			<mountain_pos type="number">109</mountain_pos>
+			<mountain_tile_id type="number">3056763</mountain_tile_id>
+			<mountain_tile_pos type="number">17</mountain_tile_pos>
+			<survey class="array">
+				<e type="string">PrimordialFireMine</e>
+				<e type="string">GoldMine</e>
+			</survey>
+		</data>
+		<dungeon type="string">Ogdenville</dungeon>
+		<dungeon_id type="number">108714</dungeon_id>
+		<id type="number">19869068</id>
+		<timestamp type="number">1300002448948</timestamp>
+		<type type="string">Survey</type>
+	</e>
+<e class="object">
+		<data class="object">
+			<mountain_pos type="number">50</mountain_pos>
+			<mountain_tile_id type="number">3058015</mountain_tile_id>
+			<mountain_tile_pos type="number">17</mountain_tile_pos>
+			<survey class="array">
+				<e type="string">PrimordialWaterMine</e>
+				<e type="string">PrimordialFireMine</e>
+				<e type="string">GoldMine</e>
+			</survey>
+		</data>
+		<dungeon type="string">Springfield</dungeon>
+		<dungeon_id type="number">522</dungeon_id>
+		<id type="number">18709214</id>
+		<timestamp type="number">1299776750110</timestamp>
+		<type type="string">Survey</type>
+	</e>
+<e class="object">
+		<data class="object">
+			<mountain_pos type="number">19</mountain_pos>
+			<mountain_tile_id type="number">3045744</mountain_tile_id>
+			<mountain_tile_pos type="number">4</mountain_tile_pos>
+			<survey class="array">
+				<e type="string">PrimordialFireMine</e>
+				<e type="string">GoldMine</e>
+			</survey>
+		</data>
+		<dungeon type="string">Springfield</dungeon>
+		<dungeon_id type="number">522</dungeon_id>
+		<id type="number">18709185</id>
+		<timestamp type="number">1299776739064</timestamp>
+		<type type="string">Survey</type>
+	</e>
+<e class="object">
+		<data class="object">
+			<mountain_pos type="number">20</mountain_pos>
+			<mountain_tile_id type="number">3058904</mountain_tile_id>
+			<mountain_tile_pos type="number">0</mountain_tile_pos>
+			<survey class="array">
+				<e type="string">PrimordialFireMine</e>
+				<e type="string">GoldMine</e>
+				<e type="string">IronMine</e>
+				<e type="string">GoldMine</e>
+				<e type="string">GoldMine</e>
+			</survey>
+		</data>
+		<dungeon type="string">North Haverbrook</dungeon>
+		<dungeon_id type="number">90717</dungeon_id>
+		<id type="number">17541546</id>
+		<timestamp type="number">1299517017248</timestamp>
+		<type type="string">Survey</type>
+	</e>
+<e class="object">
+		<data class="object">
+			<mountain_pos type="number">115</mountain_pos>
+			<mountain_tile_id type="number">3054005</mountain_tile_id>
+			<mountain_tile_pos type="number">3</mountain_tile_pos>
+			<survey class="array">
+				<e type="string">PrimordialFireMine</e>
+				<e type="string">IronMine</e>
+				<e type="string">GoldMine</e>
+			</survey>
+		</data>
+		<dungeon type="string">Brockway</dungeon>
+		<dungeon_id type="number">72351</dungeon_id>
+		<id type="number">17144130</id>
+		<timestamp type="number">1299438155357</timestamp>
+		<type type="string">Survey</type>
+	</e>
+<e class="object">
+		<data class="object">
+			<mountain_pos type="number">115</mountain_pos>
+			<mountain_tile_id type="number">3054005</mountain_tile_id>
+			<mountain_tile_pos type="number">3</mountain_tile_pos>
+			<survey class="array">
+				<e type="string">PrimordialFireMine</e>
+				<e type="string">IronMine</e>
+				<e type="string">GoldMine</e>
+			</survey>
+		</data>
+		<dungeon type="string">Brockway</dungeon>
+		<dungeon_id type="number">72351</dungeon_id>
+		<id type="number">17144128</id>
+		<timestamp type="number">1299438154247</timestamp>
+		<type type="string">Survey</type>
+	</e>
+<e class="object">
+		<data class="object">
+			<mountain_pos type="number">113</mountain_pos>
+			<mountain_tile_id type="number">3038127</mountain_tile_id>
+			<mountain_tile_pos type="number">19</mountain_tile_pos>
+			<survey class="array">
+				<e type="string">PrimordialFireMine</e>
+				<e type="string">CrystalMine</e>
+				<e type="string">GoldMine</e>
+			</survey>
+		</data>
+		<dungeon type="string">North Haverbrook</dungeon>
+		<dungeon_id type="number">90717</dungeon_id>
+		<id type="number">16736018</id>
+		<timestamp type="number">1299358034287</timestamp>
+		<type type="string">Survey</type>
+	</e>
+<e class="object">
+		<data class="object">
+			<mountain_pos type="number">325</mountain_pos>
+			<mountain_tile_id type="number">3071209</mountain_tile_id>
+			<mountain_tile_pos type="number">16</mountain_tile_pos>
+			<survey class="array">
+				<e type="string">PrimordialFireMine</e>
+				<e type="string">CrystalMine</e>
+				<e type="string">GoldMine</e>
+			</survey>
+		</data>
+		<dungeon type="string">ABANDONED_DUNGEON</dungeon>
+		<dungeon_id type="number">70201</dungeon_id>
+		<id type="number">14350498</id>
+		<timestamp type="number">1298908727045</timestamp>
+		<type type="string">Survey</type>
+	</e>
+<e class="object">
+		<data class="object">
+			<mountain_pos type="number">325</mountain_pos>
+			<mountain_tile_id type="number">3071117</mountain_tile_id>
+			<mountain_tile_pos type="number">5</mountain_tile_pos>
+			<survey class="array">
+				<e type="string">CrystalMine</e>
+				<e type="string">PrimordialFireMine</e>
+				<e type="string">GoldMine</e>
+			</survey>
+		</data>
+		<dungeon type="string">ABANDONED_DUNGEON</dungeon>
+		<dungeon_id type="number">70201</dungeon_id>
+		<id type="number">14350485</id>
+		<timestamp type="number">1298908726033</timestamp>
+		<type type="string">Survey</type>
+	</e>
+<e class="object">
+		<data class="object">
+			<mountain_pos type="number">208</mountain_pos>
+			<mountain_tile_id type="number">3076256</mountain_tile_id>
+			<mountain_tile_pos type="number">5</mountain_tile_pos>
+			<survey class="array">
+				<e type="string">IronMine</e>
+				<e type="string">PrimordialFireMine</e>
+				<e type="string">GoldMine</e>
+			</survey>
+		</data>
+		<dungeon type="string">Brockway</dungeon>
+		<dungeon_id type="number">72351</dungeon_id>
+		<id type="number">14350441</id>
+		<timestamp type="number">1298908721543</timestamp>
+		<type type="string">Survey</type>
+	</e>
+
+
+
+</surveys>
