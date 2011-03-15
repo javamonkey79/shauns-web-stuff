@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Multimap;
 
+// TODO -- extract properties files into args, allow for defaults
 public class TvShowAlerter {
 
 	private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat( "MM/dd/yy" );
@@ -25,14 +26,17 @@ public class TvShowAlerter {
 	public static void main( String[] args ) throws Throwable {
 		Multimap< String, Date > dateShowMap = DATE_MAP_BUILDER.buildDateMap();
 
-		//implement some fancy options to handle this
-		//System.out.println( TV_SHOW_REPORT_BUILDER.getRecentShowsString( dateShowMap ) );
+		// - TODO build date map, report on shows that are +\- X days
+
+		// - TODO implement some fancy options to handle this
+		System.out.println( TV_SHOW_REPORT_BUILDER.getRecentShowsString( dateShowMap ) );
 
 		Date showDateToCheck = getShowDateToCheck( args );
 
 		String showsPlayingOnDateString = TV_SHOW_REPORT_BUILDER.getShowsPlayingOnDateString( dateShowMap, showDateToCheck );
-		performEmailProcess( args, showsPlayingOnDateString );
 
+		System.out.println( showsPlayingOnDateString );
+		//performEmailProcess( args, showsPlayingOnDateString );
 	}
 
 	private static void performEmailProcess( String[] args, String showsPlayingOnDateString ) throws Throwable {
