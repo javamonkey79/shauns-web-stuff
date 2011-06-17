@@ -19,11 +19,18 @@ public class ResourceGatherer {
 	 */
 	public static void main(String[] args) throws Throwable {
 		String link = "http://live.nightowlgames.net/MyLairServer/DelegateServlet?act=loadPlayerJSON";
-		String cookieData = "JSESSIONID=B6F346B1CDC376D0C888AC70248DCF15; DUNGEON_OVERLORD_live=fmpn7g3f84nfv03n9cvj0c9ds7; fbs_110362692359888=\"access_token=110362692359888%7C2.AQCRqtl-1BZ971h6.3600.1308297600.1-507492112%7CY5NexJGm0XHg-D-t5nUQ_NO0Pfg&base_domain=nightowlgames.net&expires=1308297600&secret=IN_BYfjz9_uKlSgXXLF_gQ__&session_key=2.AQCRqtl-1BZ971h6.3600.1308297600.1-507492112&sig=a26d7e23bd38bd55c9e2d259f3c79be6&uid=507492112\"";
+		String cookieData = args.length == 0 || StringUtils.isBlank(args[0]) ? "JSESSIONID=115D9DDD70B4099A078814C5B5A2BD17; DUNGEON_OVERLORD_live=hc175qvn8b5vvincevil6st015; fbs_110362692359888=\"access_token=110362692359888%7C2.AQCj3VWHGA6Vac_h.3600.1308337200.1-507492112%7Cy3JFNqqzMaM9gPeMbizMajPYwB4&base_domain=nightowlgames.net&expires=1308337200&secret=N740koc7mEZivuudAJHgkA__&session_key=2.AQCj3VWHGA6Vac_h.3600.1308337200.1-507492112&sig=2a0c1d8beeb4f40cb824e44cc25dcbd4&uid=507492112\""
+				: args[0];
 
 		String linkPageSource = LINK_PARSER.getLinkPageSource(link, cookieData,
-				true);
+				false);
+
 		JSONObject playerData = new JSONObject(linkPageSource);
+
+		if (StringUtils.contains(linkPageSource, "not logged in.")) {
+			System.out.println("reset the cookie");
+			return;
+		}
 
 		JSONArray dungeons = playerData.getJSONArray("dungeons");
 		for (int i = 0; i < dungeons.length(); i++) {
@@ -39,7 +46,7 @@ public class ResourceGatherer {
 
 			shockAllWarlocks(cookieData, dungeonId, dungeon);
 
-			pickupResources(cookieData, dungeonId, dungeon);
+//			pickupResources(cookieData, dungeonId, dungeon);
 		}
 	}
 
