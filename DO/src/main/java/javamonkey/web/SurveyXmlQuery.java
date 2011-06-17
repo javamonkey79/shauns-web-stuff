@@ -16,22 +16,40 @@ public class SurveyXmlQuery {
 	 * @throws Exception
 	 * @throws DocumentException
 	 */
+	@SuppressWarnings("all")
 	public static void main( String[] args ) throws DocumentException, Exception {
-		Document document = DocumentHelper.parseText( FileUtils.readFileToString( new File( "./region-scaner-surveys-bull-marsh.xml" ) ) );
+//		Document document = DocumentHelper.parseText( FileUtils.readFileToString( new File( "./region-scaner-surveys-bull-marsh.xml" ) ) );
+		Document document = DocumentHelper.parseText( FileUtils.readFileToString( new File( "./region-scaner-surveys.xml" ) ) );
 
-		List< Node > nodes = document.selectNodes( "//e[count(descendant::e) > 3]" );
-//		List< Node > nodes = document.selectNodes( "//e[text()='Feldspar']/../../.." );
+//		String mineType = "FeldsparMine";
+		String mineType = "ShallowMantleMine";
+//		String mineType = "BasaltMine";
+//		String mineType = "PrimordialWaterMine";
+//		String mineType = "MithrilMine";
+		List< Node > nodes = document.selectNodes( "//e[text()='" +
+				mineType +
+				"']/../../../.." );
 		for( Node node : nodes ) {
-//			System.out.println( node.asXML() );
-
-			if ( node.asXML().contains( "Fire" ) ) {
-				System.out.println( node.asXML() );
-//				Element element = (Element)node;
-//				if ( element.elements().size() > 3 ) {
-//					System.out.println( element.getParent().getParent().asXML() );
-//				}
-
-			}
+			Document innerDocument = DocumentHelper.parseText(node.asXML());
+			
+			Node selectSingleNode = innerDocument.selectSingleNode("//e[text()='" +
+				mineType +
+				"']/../../position/text()");
+			if(selectSingleNode != null){
+			System.out.print(
+			selectSingleNode.asXML() + " :: ");
+			
+			Node positionNode = innerDocument.selectSingleNode( "//position" );
+			
+			String positionText = positionNode.getText();
+			MountainPositionCalculator.main(new String[]{positionText});
+			
+			List<Node> validDungeons = innerDocument.selectNodes("//e[text()='" +
+					mineType +
+			"']/..");
+			for (Node dungeon : validDungeons) {
+				System.out.println(dungeon.asXML());
+			}}
 		}
 	}
 
