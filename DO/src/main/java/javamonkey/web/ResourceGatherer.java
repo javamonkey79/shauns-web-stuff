@@ -5,12 +5,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javamonkey.web.link.LinkParser;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
@@ -38,7 +41,7 @@ public class ResourceGatherer {
 
 		final JTextArea cookieText = new JTextArea();
 		cookieText.setBorder(new LineBorder(Color.BLACK));
-		mainFrame.add(cookieText, "w 150px");
+		mainFrame.add(new JScrollPane(cookieText), "w 200px, h 100px");
 
 		final JCheckBox collectAll = new JCheckBox("Collect All", true);
 		mainFrame.add(collectAll, "wrap");
@@ -50,7 +53,9 @@ public class ResourceGatherer {
 		mainFrame.add(doIt, "wrap");
 		doIt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String cookieData = cookieText.getText();
+				String cookieData = parseText(cookieText.getText());
+
+				System.out.println(cookieData);
 
 				File cookieFile = new File("cookie.txt");
 				if (StringUtils.isNotBlank(cookieData)) {
@@ -75,16 +80,9 @@ public class ResourceGatherer {
 				String link = "http://live.nightowlgames.net/MyLairServer/DelegateServlet?act=loadPlayerJSON";
 
 				try {
-
-					// String cookieData = args.length == 0 ||
-					// StringUtils.isBlank(args[0])
-					// ?
-					// "JSESSIONID=115D9DDD70B4099A078814C5B5A2BD17; DUNGEON_OVERLORD_live=hc175qvn8b5vvincevil6st015; fbs_110362692359888=\"access_token=110362692359888%7C2.AQCj3VWHGA6Vac_h.3600.1308337200.1-507492112%7Cy3JFNqqzMaM9gPeMbizMajPYwB4&base_domain=nightowlgames.net&expires=1308337200&secret=N740koc7mEZivuudAJHgkA__&session_key=2.AQCj3VWHGA6Vac_h.3600.1308337200.1-507492112&sig=2a0c1d8beeb4f40cb824e44cc25dcbd4&uid=507492112\""
-					// : args[0];
-
 					String linkPageSource = LINK_PARSER.getLinkPageSource(link,
 							cookieData, false);
-					
+
 					System.out.println(linkPageSource);
 
 					JSONObject playerData = new JSONObject(linkPageSource);
@@ -117,12 +115,28 @@ public class ResourceGatherer {
 				} catch (Throwable throwable) {
 					throw new RuntimeException(throwable);
 				}
+				System.out
+						.println("=================================================\nactions complete\n=================================================");
 			}
+
 		});
 
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainFrame.setBounds(200, 200, 100, 200);
+		mainFrame.setBounds(200, 200, 200, 300);
 		mainFrame.setVisible(true);
+	}
+
+	private static String parseText(String text) {
+		if (StringUtils.isNotBlank(text)) {
+			Pattern pattern = Pattern.compile("^\\s*Cookie\\[(.*)\\]$",
+					Pattern.MULTILINE);
+			Matcher matcher = pattern.matcher(text);
+			if (matcher.find()) {
+				return matcher.group(1);
+			}
+		}
+
+		return text;
 	}
 
 	private static void shockAllWarlocks(String cookieData, String dungeonId,
@@ -135,14 +149,24 @@ public class ResourceGatherer {
 			int id = creature.getInt("id");
 			String type = creature.getString("type");
 
-			if (StringUtils.equalsIgnoreCase(type, "Warlock") && happiness > 25) {
-				System.out
-						.println(LINK_PARSER.getLinkPageSource(
-								String.format(
-										"http://live.nightowlgames.net/MyLairServer/DelegateServlet?act=forceWorkJSON&dungeonId=%s&id=%s",
-										dungeonId, id), cookieData, false));
+			if (StringUtils.equalsIgnoreCase(type, "Warlock")) {
+				while (happiness > 10) {
+					
+					System.out.println(String.format("Shocking Warlock: %s, current happiness: %s", id, happiness));
+					
+					String shockWarlockUrl = String
+							.format("http://live.nightowlgames.net/MyLairServer/DelegateServlet?act=forceWorkJSON&dungeonId=%s&id=%s",
+									dungeonId, id);
 
-				Thread.sleep(1000);
+					System.out.println(shockWarlockUrl);
+
+					System.out.println(LINK_PARSER.getLinkPageSource(
+							shockWarlockUrl, cookieData, false));
+
+					happiness -= 10;
+					
+					Thread.sleep(500);
+				}
 			}
 		}
 	}
@@ -173,7 +197,7 @@ public class ResourceGatherer {
 									dungeonId, type, quantity), cookieData,
 							false));
 
-			Thread.sleep(1000);
+			Thread.sleep(500);
 		}
 	}
 
