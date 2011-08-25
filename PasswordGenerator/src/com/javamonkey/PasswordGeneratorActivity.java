@@ -11,11 +11,14 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TableRow.LayoutParams;
@@ -57,13 +60,26 @@ public class PasswordGeneratorActivity extends Activity {
 		}
 	}
 
-	private void createComputerNameRow(String computerName) {
+	private void createComputerNameRow(final String computerName) {
 
 		TableLayout tl = (TableLayout) findViewById(R.id.tableLayout);
 
 		TableRow tr = new TableRow(this);
 		tr.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
 				LayoutParams.WRAP_CONTENT));
+
+		ImageButton imageButton = new ImageButton(this);
+		imageButton.setImageResource(android.R.drawable.ic_delete);
+		imageButton.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
+				LayoutParams.WRAP_CONTENT));
+		imageButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				removeComputerName(computerName);
+			}
+		});
+
+		tr.addView(imageButton);
 
 		TextView textView = new TextView(this);
 		textView.setText(computerName);
@@ -101,6 +117,19 @@ public class PasswordGeneratorActivity extends Activity {
 				return;
 			}
 		});
+
+		alertDialog.setButton2("Text", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				String uri = "smsto:" + "";
+				Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse(uri));
+				intent.putExtra("sms_body",
+						PASSWORD_GENERATOR.generatePasswordForSeed(seedText));
+				intent.putExtra("compose_mode", true);
+				startActivity(intent);
+			}
+		});
+
 		alertDialog.show();
 	}
 
@@ -126,9 +155,25 @@ public class PasswordGeneratorActivity extends Activity {
 		}
 	}
 
-	public void saveComputerName(String computerName) {
+	private void saveComputerName(String computerName) {
 		computerNames.add(computerName);
 
+		saveComputerNamesFile();
+
+		finish();
+		startActivity(getIntent());
+	}
+
+	private void removeComputerName(String computerName) {
+		computerNames.remove(computerName);
+
+		saveComputerNamesFile();
+
+		finish();
+		startActivity(getIntent());
+	}
+
+	private void saveComputerNamesFile() {
 		try {
 			FileOutputStream fos = openFileOutput(COMPUTER_NAMES_FILE,
 					Context.MODE_PRIVATE);
