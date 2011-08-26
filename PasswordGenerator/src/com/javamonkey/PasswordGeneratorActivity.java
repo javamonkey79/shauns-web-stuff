@@ -3,19 +3,23 @@ package com.javamonkey;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -23,6 +27,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 public class PasswordGeneratorActivity extends Activity {
 
@@ -64,53 +69,91 @@ public class PasswordGeneratorActivity extends Activity {
 
 		TableLayout tl = (TableLayout) findViewById(R.id.tableLayout);
 
+		tl.addView(createTableRow(computerName), new TableLayout.LayoutParams(
+				LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+	}
+
+	private TableRow createTableRow(final String computerName) {
 		TableRow tr = new TableRow(this);
 		tr.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
 				LayoutParams.WRAP_CONTENT));
 
-		ImageButton imageButton = new ImageButton(this);
-		imageButton.setImageResource(android.R.drawable.ic_delete);
-		imageButton.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
-				LayoutParams.WRAP_CONTENT));
-		imageButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				removeComputerName(computerName);
-			}
-		});
+		ImageButton deleteButton = createDeleteButton(computerName);
 
-		tr.addView(imageButton);
+		tr.addView(deleteButton);
 
-		TextView textView = new TextView(this);
-		textView.setText(computerName);
-		textView.setId(Math.abs((int) System.currentTimeMillis()));
+		TextView computerNameTextView = createComputerNameTextView(computerName);
 
-		LayoutParams buttonLayoutParams = new LayoutParams(
-				LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
-		buttonLayoutParams.column = 1;
-		textView.setLayoutParams(buttonLayoutParams);
+		tr.addView(computerNameTextView);
 
-		tr.addView(textView);
+		Button genPasswordButton = createGeneratePasswordButton(computerNameTextView);
 
+		tr.addView(genPasswordButton);
+		return tr;
+	}
+
+	private Button createGeneratePasswordButton(
+			final TextView computerNameTextView) {
 		Button genPasswordButton = new Button(this);
 		genPasswordButton.setText(R.string.button_text);
 		genPasswordButton.setId(Math.abs((int) System.currentTimeMillis()));
 		genPasswordButton.setLayoutParams(new LayoutParams(
 				LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
 		genPasswordButton.setOnClickListener(new PasswordButtonClickListener(
-				textView));
+				computerNameTextView));
+		genPasswordButton.setOnLongClickListener(new OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View v) {
+				createTimePickerDialog(computerNameTextView);
 
-		tr.addView(genPasswordButton);
+				return false;
+			}
+		});
 
-		tl.addView(tr, new TableLayout.LayoutParams(LayoutParams.FILL_PARENT,
-				LayoutParams.WRAP_CONTENT));
+		return genPasswordButton;
 	}
 
-	private void createPasswordDialog(final String seedText) {
+	private TextView createComputerNameTextView(final String computerName) {
+		TextView computerNameTextView = new TextView(this);
+		computerNameTextView.setText(computerName);
+		computerNameTextView.setId(Math.abs((int) System.currentTimeMillis()));
+
+		LayoutParams layoutParams = new LayoutParams(LayoutParams.FILL_PARENT,
+				LayoutParams.WRAP_CONTENT);
+		layoutParams.gravity = Gravity.CENTER;
+		computerNameTextView.setLayoutParams(layoutParams);
+
+		return computerNameTextView;
+	}
+
+	private ImageButton createDeleteButton(final String computerName) {
+		ImageButton deleteButton = new ImageButton(this);
+		deleteButton.setImageResource(android.R.drawable.ic_delete);
+		deleteButton.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
+				LayoutParams.WRAP_CONTENT));
+		deleteButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				removeComputerName(computerName);
+			}
+		});
+		deleteButton.setId(Math.abs((int) System.currentTimeMillis()));
+
+		return deleteButton;
+	}
+
+	private void createPasswordDialog(final String seedText, final int hourToUse) {
 		AlertDialog alertDialog = new AlertDialog.Builder(
 				PasswordGeneratorActivity.this).create();
+
+		TextView alertDialogTextView = new TextView(this);
+		alertDialogTextView.setText(PASSWORD_GENERATOR.generatePasswordForSeed(
+				seedText, hourToUse));
+		alertDialogTextView.setGravity(Gravity.CENTER_HORIZONTAL);
+
+		alertDialog.setView(alertDialogTextView);
+
 		alertDialog.setTitle("Password Generated");
-		alertDialog.setMessage(getPasswordForEntry(seedText));
 		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
@@ -123,18 +166,14 @@ public class PasswordGeneratorActivity extends Activity {
 			public void onClick(DialogInterface dialog, int which) {
 				String uri = "smsto:" + "";
 				Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse(uri));
-				intent.putExtra("sms_body",
-						PASSWORD_GENERATOR.generatePasswordForSeed(seedText));
+				intent.putExtra("sms_body", PASSWORD_GENERATOR
+						.generatePasswordForSeed(seedText, hourToUse));
 				intent.putExtra("compose_mode", true);
 				startActivity(intent);
 			}
 		});
 
 		alertDialog.show();
-	}
-
-	private String getPasswordForEntry(final String seedText) {
-		return PASSWORD_GENERATOR.generatePasswordForSeed(seedText);
 	}
 
 	private final class PasswordButtonClickListener implements OnClickListener {
@@ -147,7 +186,7 @@ public class PasswordGeneratorActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			String computerName = _computerNameTextView.getText().toString();
-			createPasswordDialog(computerName);
+			createPasswordDialog(computerName, -1);
 
 			if (_computerNameTextView instanceof EditText) {
 				saveComputerName(computerName);
@@ -186,5 +225,24 @@ public class PasswordGeneratorActivity extends Activity {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void createTimePickerDialog(final TextView computerNameTextView) {
+		TimePickerDialog.OnTimeSetListener mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+			@Override
+			public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+				createPasswordDialog(computerNameTextView.getText().toString(),
+						hourOfDay);
+			}
+		};
+
+		final Calendar c = Calendar.getInstance();
+		int hourOfDay = c.get(Calendar.HOUR_OF_DAY);
+		int minute = c.get(Calendar.MINUTE);
+
+		final TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+				mTimeSetListener, hourOfDay, minute, true);
+
+		timePickerDialog.show();
 	}
 }
