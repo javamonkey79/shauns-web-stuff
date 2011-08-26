@@ -12,10 +12,15 @@ public class PasswordGenerator {
 	private static final int FIRST_NUMERIC_ASCII = 48;
 
 	public String generatePasswordForSeed(String seed) {
+		return generatePasswordForSeed(seed, -1);
+	}
+
+	public String generatePasswordForSeed(String seed, int hourToUse) {
 		GregorianCalendar gregorianCalendar = new GregorianCalendar();
 		int day = gregorianCalendar.get(Calendar.DAY_OF_MONTH);
 		int month = gregorianCalendar.get(Calendar.MONTH);
-		int hour = gregorianCalendar.get(Calendar.HOUR_OF_DAY);
+		int hour = hourToUse == -1 ? gregorianCalendar
+				.get(Calendar.HOUR_OF_DAY) : hourToUse;
 
 		String encrypted = "";
 
