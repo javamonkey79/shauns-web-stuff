@@ -43,9 +43,9 @@ public class PasswordGeneratorActivity extends Activity {
 
 		setContentView(R.layout.main);
 
-		Button pwButton = (Button) findViewById(R.id.newPasswordButton);
+		Button pwButton = (Button) findViewById(R.id.newComputerButton);
 		pwButton.setOnClickListener(new PasswordButtonClickListener(
-				((EditText) findViewById(R.id.newPasswordText))));
+				((EditText) findViewById(R.id.newComputerText))));
 
 		loadComputerNames();
 
@@ -95,7 +95,7 @@ public class PasswordGeneratorActivity extends Activity {
 	private Button createGeneratePasswordButton(
 			final TextView computerNameTextView) {
 		Button genPasswordButton = new Button(this);
-		genPasswordButton.setText(R.string.button_text);
+		genPasswordButton.setText(R.string.get_password_button);
 		genPasswordButton.setId(Math.abs((int) System.currentTimeMillis()));
 		genPasswordButton.setLayoutParams(new LayoutParams(
 				LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
@@ -169,6 +169,7 @@ public class PasswordGeneratorActivity extends Activity {
 				intent.putExtra("sms_body", PASSWORD_GENERATOR
 						.generatePasswordForSeed(seedText, hourToUse));
 				intent.putExtra("compose_mode", true);
+
 				startActivity(intent);
 			}
 		});
@@ -186,10 +187,11 @@ public class PasswordGeneratorActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			String computerName = _computerNameTextView.getText().toString();
-			createPasswordDialog(computerName, -1);
 
 			if (_computerNameTextView instanceof EditText) {
 				saveComputerName(computerName);
+			} else {
+				createPasswordDialog(computerName, -1);
 			}
 		}
 	}
@@ -198,9 +200,6 @@ public class PasswordGeneratorActivity extends Activity {
 		computerNames.add(computerName);
 
 		saveComputerNamesFile();
-
-		finish();
-		startActivity(getIntent());
 	}
 
 	private void removeComputerName(String computerName) {
@@ -225,6 +224,9 @@ public class PasswordGeneratorActivity extends Activity {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		finish();
+		startActivity(getIntent());
 	}
 
 	private void createTimePickerDialog(final TextView computerNameTextView) {
@@ -245,4 +247,5 @@ public class PasswordGeneratorActivity extends Activity {
 
 		timePickerDialog.show();
 	}
+
 }
