@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Password Generator</string>
-    <string name="button_text">Get Password</string>
+    <string name="get_password_button">Get Password</string>
+    <string name="new_computer_button">New Computer</string>
 </resources>
