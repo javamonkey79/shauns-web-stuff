@@ -120,25 +120,33 @@ public class NamePickerActivity extends Activity {
 				@Override
 				public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
 
-					// TODO - velocity logic: figure out how long to spin based on velocity
-					// TODO - gesture fix: only a down gesture should activate
-					final long startTime = System.currentTimeMillis();
-					Thread thread = new Thread(new Runnable() {
-						@Override
-						public void run() {
-							while (System.currentTimeMillis() - startTime < 2000) {
-								HANDLER.post(new Runnable() {
-									@Override
-									public void run() {
-										pathCount++;
-										invalidate();
-									}
-								});
-							}
-						}
-					});
+					System.out.println(String.format("e1.x: %s, e1.y:%s, e2.x:%s, e2.y:%s", e1.getX(), e1.getY(), e2.getX(), e2.getY()));
 
-					thread.start();
+					double deltaX = Math.abs(e1.getX() - e2.getX());
+					double deltaY = e1.getY() - e2.getY();
+
+					System.out.println(String.format("deltaX:%s, deltaY:%s", deltaX, deltaY));
+
+					// TODO - velocity logic: figure out how long to spin based on velocity
+					if (deltaX < 100 && deltaY < -100) {
+						final long startTime = System.currentTimeMillis();
+						Thread thread = new Thread(new Runnable() {
+							@Override
+							public void run() {
+								while (System.currentTimeMillis() - startTime < 2000) {
+									HANDLER.post(new Runnable() {
+										@Override
+										public void run() {
+											pathCount++;
+											invalidate();
+										}
+									});
+								}
+							}
+						});
+
+						thread.start();
+					}
 
 					return true;
 				}
