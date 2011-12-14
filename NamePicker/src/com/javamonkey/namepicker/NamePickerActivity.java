@@ -1,7 +1,11 @@
 package com.javamonkey.namepicker;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,30 +14,111 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
+import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.GestureDetector;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
 
 public class NamePickerActivity extends Activity {
 
-	// TODO - draw the cell alphanumeric inputs (eg: names)
+	private List<String> _pickerItems;
+	private static final String PICKER_FILE = "picker-items.txt";
+
+	private boolean inEditMode = false;
 
 	private static final Handler HANDLER = new Handler();
 	private GestureDetector gestureDetector;
 
+	@Override
+	public boolean onCreatePanelMenu(int featureId, Menu menu) {
+		menu.add(1, Menu.FIRST, Menu.FIRST, "Configure Names");
+
+		return super.onCreatePanelMenu(featureId, menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		inEditMode = true;
+
+		_editTextView = new EditText(this);
+
+		StringBuilder text = new StringBuilder();
+		List<String> pickerItems = getPickerItems();
+		for (String pickerItem : pickerItems) {
+			text.append(pickerItem);
+			text.append("\n");
+		}
+
+		_editTextView.setText(text.toString());
+
+		setContentView(_editTextView);
+
+		return super.onOptionsItemSelected(item);
+	}
+
+	private List<String> getPickerItems() {
+		List<String> pickerItems = new ArrayList<String>();
+		try {
+			Scanner scanner = new Scanner(openFileInput(PICKER_FILE));
+			while (scanner.hasNext()) {
+				pickerItems.add(scanner.nextLine());
+			}
+		} catch (Exception fileNotFoundException) {
+			fileNotFoundException.printStackTrace();
+
+			return Arrays.asList("Shaun", "Greg", "Dan O.", "Dan W.", "Paul", "Jim");
+		}
+
+		return pickerItems;
+	}
+
+	@Override
+	public void onBackPressed() {
+		if (inEditMode) {
+			savePickerItems();
+			setContentView(new GraphicsView(this));
+		} else {
+			super.onBackPressed();
+		}
+	}
+
+	private void savePickerItems() {
+		try {
+			FileOutputStream fos = openFileOutput(PICKER_FILE, Context.MODE_PRIVATE);
+
+			String text = _editTextView.getText().toString();
+			Scanner textScanner = new Scanner(text);
+			while (textScanner.hasNext()) {
+				String line = textScanner.nextLine();
+				fos.write((line + "\n").getBytes());
+			}
+
+			fos.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	private class GraphicsView extends View {
-		// private Canvas canvas;
-		// private final boolean redrawing = false;
 
 		public GraphicsView(Context context) {
 			super(context);
 
+			inEditMode = false;
+
+			_pickerItems = getPickerItems();
+
 			gestureDetector = new GestureDetector(NamePickerActivity.this, new GestureDetector.SimpleOnGestureListener() {
 				@Override
-				public boolean onFling(MotionEvent arg0, MotionEvent arg1, float arg2, float arg3) {
+				public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
 
 					// TODO - velocity logic: figure out how long to spin based on velocity
 					// TODO - gesture fix: only a down gesture should activate
@@ -70,14 +155,9 @@ public class NamePickerActivity extends Activity {
 			super.onDraw(canvas);
 
 			drawPickerWheel(canvas);
-
-			// this.canvas = canvas;
 		}
 
 		private void drawPickerWheel(final Canvas canvas) {
-
-			System.out.println("drawPickerWheel");
-
 			int centerX = canvas.getWidth() / 2;
 			int centerY = canvas.getHeight() / 2;
 
@@ -98,7 +178,6 @@ public class NamePickerActivity extends Activity {
 			canvas.drawOval(leftOval, paint);
 
 			RectF rightOval = new RectF(left + 250, top, right + 250, bottom);
-			// canvas.drawArc(rightOval, 270, 180, false, paint);
 
 			// FIXME - let the loop draw the first line
 			Line lastLine = new Line((left + right) / 2, top, (rightOval.left + rightOval.right) / 2, top);
@@ -111,30 +190,22 @@ public class NamePickerActivity extends Activity {
 				Line curLine = drawLineBetweenOvals(canvas, paint, top, leftOval, rightOval, leftXCenter, rightXCenter, yOffset);
 
 				if (lastLine != null) {
-					drawPathForLines(curLine, lastLine, canvas, paint);
+					drawWheelCell(curLine, lastLine, canvas, paint, _pickerItems);
 				}
-
 				lastLine = curLine;
 			}
+
+			drawSideArrow(canvas, paint, top, right, bottom);
 		}
 
-		// private synchronized void spinWheel() {
-		// if (!redrawing) {
-		// Handler handler = new Handler();
-		// handler.postDelayed(new Runnable() {
-		// @Override
-		// public void run() {
-		// redrawing = true;
-		//
-		// pathCount++;
-		// drawPickerWheel(GraphicsView.this.canvas);
-		// invalidate();
-		//
-		// redrawing = false;
-		// }
-		// }, 100);
-		// }
-		// }
+		private void drawSideArrow(final Canvas canvas, final Paint paint, float top, float right, float bottom) {
+			float arrowOriginY = ((top + bottom) / 2) + 30;
+			float arrowOriginX = right + 260;
+
+			canvas.drawLine(arrowOriginX, arrowOriginY, arrowOriginX + 75, arrowOriginY, paint);
+			canvas.drawLine(arrowOriginX, arrowOriginY, arrowOriginX + 25, arrowOriginY + 25, paint);
+			canvas.drawLine(arrowOriginX, arrowOriginY, arrowOriginX + 25, arrowOriginY - 25, paint);
+		}
 
 		@Override
 		public boolean onTouchEvent(MotionEvent event) {
@@ -158,12 +229,17 @@ public class NamePickerActivity extends Activity {
 
 	private final List<Path> paths = new ArrayList<Path>();
 	private int pathCount = 0;
+	private EditText _editTextView;
 
-	private void drawPathForLines(Line curLine, Line lastLine, Canvas canvas, Paint paint) {
+	private void drawWheelCell(Line curLine, Line lastLine, Canvas canvas, Paint paint, List<String> pickerItems) {
+
+		float centerTextX = (curLine.x2 + curLine.x1) / 2;
+		float centerTextY = (lastLine.y1 + curLine.y1) / 2;
 
 		Path path = new Path();
 
 		path.moveTo(lastLine.x1, lastLine.y1);
+
 		path.lineTo(lastLine.x2, lastLine.y2);
 		path.lineTo(curLine.x2, curLine.y2);
 		path.lineTo(curLine.x1, curLine.y1);
@@ -178,6 +254,21 @@ public class NamePickerActivity extends Activity {
 
 		paint.setColor(Color.BLACK);
 		paint.setStyle(Style.STROKE);
+
+		final Paint textPaint = new Paint();
+		textPaint.setColor(Color.BLACK);
+		textPaint.setAntiAlias(true);
+		textPaint.setStyle(Paint.Style.FILL);
+		textPaint.setTextSize(25);
+		textPaint.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+
+		String text = pickerItems.get(pathCount % pickerItems.size());
+		Rect bounds = new Rect();
+		textPaint.getTextBounds(text, 0, text.length(), bounds);
+		int height = bounds.height();
+		int width = bounds.width();
+
+		canvas.drawText(text, centerTextX - (width / 2), centerTextY + (height / 2), textPaint);
 
 		paths.add(path);
 
