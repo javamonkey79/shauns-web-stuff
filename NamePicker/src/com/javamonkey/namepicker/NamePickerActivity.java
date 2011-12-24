@@ -9,6 +9,8 @@ import java.util.Scanner;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -29,8 +31,6 @@ import android.widget.EditText;
 public class NamePickerActivity extends Activity {
 
 	// TODO - fix the icon & name
-
-	// TODO - lock the flipping
 
 	// TODO - multiple lists of names
 
@@ -98,6 +98,12 @@ public class NamePickerActivity extends Activity {
 		} else {
 			super.onBackPressed();
 		}
+	}
+
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 
 	private void savePickerItems() {
