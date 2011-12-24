@@ -28,13 +28,23 @@ import android.widget.EditText;
 
 public class NamePickerActivity extends Activity {
 
+	// TODO - fix the icon & name
+
+	// TODO - lock the flipping
+
+	// TODO - multiple lists of names
+
+	// TODO - cleanup all of the magic numbers
+
+	// TODO - fix the angling on the top and bottom paths
+
 	private List<String> _pickerItems;
-	private static final String PICKER_FILE = "picker-items.txt";
+	private GestureDetector gestureDetector;
 
 	private boolean inEditMode = false;
 
+	private static final String PICKER_FILE = "picker-items.txt";
 	private static final Handler HANDLER = new Handler();
-	private GestureDetector gestureDetector;
 
 	@Override
 	public boolean onCreatePanelMenu(int featureId, Menu menu) {
@@ -118,22 +128,31 @@ public class NamePickerActivity extends Activity {
 
 			gestureDetector = new GestureDetector(NamePickerActivity.this, new GestureDetector.SimpleOnGestureListener() {
 				@Override
-				public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+				public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, final float velocityY) {
 
-					System.out.println(String.format("e1.x: %s, e1.y:%s, e2.x:%s, e2.y:%s", e1.getX(), e1.getY(), e2.getX(), e2.getY()));
+					System.out.println(String.format("velocityY:%s", velocityY));
+					// System.out.println(String.format("e1.x: %s, e1.y:%s, e2.x:%s, e2.y:%s", e1.getX(), e1.getY(), e2.getX(), e2.getY()));
 
 					double deltaX = Math.abs(e1.getX() - e2.getX());
 					double deltaY = e1.getY() - e2.getY();
 
-					System.out.println(String.format("deltaX:%s, deltaY:%s", deltaX, deltaY));
+					// System.out.println(String.format("deltaX:%s, deltaY:%s", deltaX, deltaY));
 
-					// TODO - velocity logic: figure out how long to spin based on velocity
 					if (deltaX < 100 && deltaY < -100) {
 						final long startTime = System.currentTimeMillis();
 						Thread thread = new Thread(new Runnable() {
 							@Override
 							public void run() {
-								while (System.currentTimeMillis() - startTime < 2000) {
+								long timeRunning = System.currentTimeMillis() - startTime;
+								long sleepTime = getInitialWheelThreadSleepTime(velocityY);
+								while (timeRunning < 3000) {
+
+									try {
+										Thread.sleep(sleepTime);
+									} catch (InterruptedException interruptedException) {
+										interruptedException.printStackTrace();
+									}
+
 									HANDLER.post(new Runnable() {
 										@Override
 										public void run() {
@@ -141,14 +160,41 @@ public class NamePickerActivity extends Activity {
 											invalidate();
 										}
 									});
+
+									timeRunning = System.currentTimeMillis() - startTime;
+									sleepTime = getSleepTimeForTimeRunning(sleepTime, timeRunning);
 								}
 							}
+
 						});
 
 						thread.start();
 					}
 
 					return true;
+				}
+
+				private long getSleepTimeForTimeRunning(long sleepTime, long timeRunning) {
+					int timeRunningHundreths = (int) (timeRunning / 100);
+					long slowingSleepTime = sleepTime + timeRunningHundreths;
+
+					return slowingSleepTime;
+				}
+
+				private long getInitialWheelThreadSleepTime(float velocityY) {
+					int velocityThousands = (int) (velocityY / 1000);
+					switch (velocityThousands) {
+					case 0:
+						return 300;
+					case 1:
+						return 200;
+					case 2:
+						return 100;
+					case 3:
+						return 50;
+					default:
+						return 0;
+					}
 				}
 
 				@Override
@@ -284,6 +330,11 @@ public class NamePickerActivity extends Activity {
 	}
 
 	private int getColorForPath() {
+
+		// TODO - have names paired with colors
+
+		System.out.println("color item: " + pathCount % _pickerItems.size());
+
 		switch (pathCount % 4) {
 		case 0:
 			return Color.RED;
