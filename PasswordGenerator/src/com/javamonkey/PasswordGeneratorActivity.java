@@ -44,14 +44,51 @@ public class PasswordGeneratorActivity extends Activity {
 		setContentView(R.layout.main);
 
 		Button pwButton = (Button) findViewById(R.id.newComputerButton);
-		pwButton.setOnClickListener(new PasswordButtonClickListener(
-				((EditText) findViewById(R.id.newComputerText))));
+		pwButton.setOnClickListener(new PasswordButtonClickListener(((EditText) findViewById(R.id.newComputerText))));
 
 		loadComputerNames();
 
 		for (String name : computerNames) {
 			createComputerNameRow(name);
 		}
+
+		createSendAllRow();
+	}
+
+	private void createSendAllRow() {
+		TableLayout tl = (TableLayout) findViewById(R.id.tableLayout);
+
+		TableRow tr = new TableRow(this);
+
+		Button genPasswordButton = new Button(this);
+		genPasswordButton.setText(R.string.get_all_passwords_button);
+		genPasswordButton.setId(Math.abs((int) System.currentTimeMillis()));
+		genPasswordButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				String uri = "smsto:" + "";
+				Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse(uri));
+
+				String smsBody = "";
+				for (String name : computerNames) {
+					smsBody += name;
+					smsBody += " : ";
+					smsBody += PASSWORD_GENERATOR.generatePasswordForSeed(name, -1) + "\n";
+				}
+
+				intent.putExtra("sms_body", smsBody);
+				intent.putExtra("compose_mode", true);
+
+				startActivity(intent);
+			}
+		});
+
+		// FIXME -- kind of a hack, adding 2 empty text views, to keep the grid
+		tr.addView(createComputerNameTextView(""));
+		tr.addView(createComputerNameTextView(""));
+		tr.addView(genPasswordButton);
+
+		tl.addView(tr, new TableLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
 	}
 
 	private void loadComputerNames() {
@@ -66,17 +103,14 @@ public class PasswordGeneratorActivity extends Activity {
 	}
 
 	private void createComputerNameRow(final String computerName) {
-
 		TableLayout tl = (TableLayout) findViewById(R.id.tableLayout);
 
-		tl.addView(createTableRow(computerName), new TableLayout.LayoutParams(
-				LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+		tl.addView(createTableRow(computerName), new TableLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
 	}
 
 	private TableRow createTableRow(final String computerName) {
 		TableRow tr = new TableRow(this);
-		tr.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
-				LayoutParams.WRAP_CONTENT));
+		tr.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
 
 		ImageButton deleteButton = createDeleteButton(computerName);
 
@@ -92,15 +126,12 @@ public class PasswordGeneratorActivity extends Activity {
 		return tr;
 	}
 
-	private Button createGeneratePasswordButton(
-			final TextView computerNameTextView) {
+	private Button createGeneratePasswordButton(final TextView computerNameTextView) {
 		Button genPasswordButton = new Button(this);
 		genPasswordButton.setText(R.string.get_password_button);
 		genPasswordButton.setId(Math.abs((int) System.currentTimeMillis()));
-		genPasswordButton.setLayoutParams(new LayoutParams(
-				LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
-		genPasswordButton.setOnClickListener(new PasswordButtonClickListener(
-				computerNameTextView));
+		genPasswordButton.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+		genPasswordButton.setOnClickListener(new PasswordButtonClickListener(computerNameTextView));
 		genPasswordButton.setOnLongClickListener(new OnLongClickListener() {
 			@Override
 			public boolean onLongClick(View v) {
@@ -118,8 +149,7 @@ public class PasswordGeneratorActivity extends Activity {
 		computerNameTextView.setText(computerName);
 		computerNameTextView.setId(Math.abs((int) System.currentTimeMillis()));
 
-		LayoutParams layoutParams = new LayoutParams(LayoutParams.FILL_PARENT,
-				LayoutParams.WRAP_CONTENT);
+		LayoutParams layoutParams = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
 		layoutParams.gravity = Gravity.CENTER;
 		computerNameTextView.setLayoutParams(layoutParams);
 
@@ -129,8 +159,7 @@ public class PasswordGeneratorActivity extends Activity {
 	private ImageButton createDeleteButton(final String computerName) {
 		ImageButton deleteButton = new ImageButton(this);
 		deleteButton.setImageResource(android.R.drawable.ic_delete);
-		deleteButton.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
-				LayoutParams.WRAP_CONTENT));
+		deleteButton.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
 		deleteButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -143,12 +172,10 @@ public class PasswordGeneratorActivity extends Activity {
 	}
 
 	private void createPasswordDialog(final String seedText, final int hourToUse) {
-		AlertDialog alertDialog = new AlertDialog.Builder(
-				PasswordGeneratorActivity.this).create();
+		AlertDialog alertDialog = new AlertDialog.Builder(PasswordGeneratorActivity.this).create();
 
 		TextView alertDialogTextView = new TextView(this);
-		alertDialogTextView.setText(PASSWORD_GENERATOR.generatePasswordForSeed(
-				seedText, hourToUse));
+		alertDialogTextView.setText(seedText + " : " + PASSWORD_GENERATOR.generatePasswordForSeed(seedText, hourToUse));
 		alertDialogTextView.setGravity(Gravity.CENTER_HORIZONTAL);
 
 		alertDialog.setView(alertDialogTextView);
@@ -166,8 +193,7 @@ public class PasswordGeneratorActivity extends Activity {
 			public void onClick(DialogInterface dialog, int which) {
 				String uri = "smsto:" + "";
 				Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse(uri));
-				intent.putExtra("sms_body", PASSWORD_GENERATOR
-						.generatePasswordForSeed(seedText, hourToUse));
+				intent.putExtra("sms_body", seedText + " : " + PASSWORD_GENERATOR.generatePasswordForSeed(seedText, hourToUse));
 				intent.putExtra("compose_mode", true);
 
 				startActivity(intent);
@@ -213,8 +239,7 @@ public class PasswordGeneratorActivity extends Activity {
 
 	private void saveComputerNamesFile() {
 		try {
-			FileOutputStream fos = openFileOutput(COMPUTER_NAMES_FILE,
-					Context.MODE_PRIVATE);
+			FileOutputStream fos = openFileOutput(COMPUTER_NAMES_FILE, Context.MODE_PRIVATE);
 
 			for (String name : computerNames) {
 				fos.write((name + "\n").getBytes());
@@ -233,8 +258,7 @@ public class PasswordGeneratorActivity extends Activity {
 		TimePickerDialog.OnTimeSetListener mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
 			@Override
 			public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-				createPasswordDialog(computerNameTextView.getText().toString(),
-						hourOfDay);
+				createPasswordDialog(computerNameTextView.getText().toString(), hourOfDay);
 			}
 		};
 
@@ -242,8 +266,7 @@ public class PasswordGeneratorActivity extends Activity {
 		int hourOfDay = c.get(Calendar.HOUR_OF_DAY);
 		int minute = c.get(Calendar.MINUTE);
 
-		final TimePickerDialog timePickerDialog = new TimePickerDialog(this,
-				mTimeSetListener, hourOfDay, minute, true);
+		final TimePickerDialog timePickerDialog = new TimePickerDialog(this, mTimeSetListener, hourOfDay, minute, true);
 
 		timePickerDialog.show();
 	}

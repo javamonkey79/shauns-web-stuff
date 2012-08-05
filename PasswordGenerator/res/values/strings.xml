@@ -3,4 +3,5 @@
     <string name="app_name">Password Generator</string>
     <string name="get_password_button">Get Password</string>
     <string name="new_computer_button">New Computer</string>
+    <string name="get_all_passwords_button">Text All</string>
 </resources>
