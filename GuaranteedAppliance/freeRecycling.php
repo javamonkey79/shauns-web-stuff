@@ -4,7 +4,7 @@
     
     $homeActive = false;
     $hoursAndLocationActive = false;
-    $onlineInventoryActive = true;
+    $freeRecyclingActive = true;
     $salesActive = false;
     $repairsActive = false;
     $faqActive = false;
