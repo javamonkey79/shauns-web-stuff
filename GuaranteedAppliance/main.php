@@ -32,7 +32,7 @@
 </noscript>
 <div class="main" id="main"
 			<?php 
-				if ( $onlineInventoryActive ) {
+				if ( $freeRecyclingActive ) {
 					print "style=\"height: 1850px;\"";
 				}
 			?>	
@@ -43,13 +43,13 @@
 			if( $browser == "IE" ) {
 				print "
 		<div class=\"phoneNumbers\">
-~MAIN: (509) 928-3368~	~CELL: (509) 218-4683~
+~MAIN: (509) 928-3368~
 		</div>
 				";
 			} else {
 				print "
 		<span class=\"phoneNumbers\">
-~MAIN: (509) 928-3368~	~CELL: (509) 218-4683~
+~MAIN: (509) 928-3368~
 		</span>
 				";				
 			}
@@ -58,7 +58,7 @@
 
 	<a class="sideTab rounded" href="<?php if( !$noscript ) { print "#"; } else { print "home.php"; }?>" onclick="toggleContentDiv('homeDiv');">Home</a>
 	<a class="sideTab rounded" href="<?php if( !$noscript ) { print "#"; } else { print "hoursAndLocation.php"; }?>" onclick="toggleContentDiv('hoursAndLocationDiv');">Hours &amp; Location</a>
-	<a class="sideTab rounded" href="<?php if( !$noscript ) { print "#"; } else { print "onlineInventory.php"; }?>" onclick="toggleContentDiv('onlineInventoryDiv');">Online Inventory</a>
+	<a class="sideTab rounded" href="<?php if( !$noscript ) { print "#"; } else { print "freeRecycling.php"; }?>" onclick="toggleContentDiv('freeRecyclingDiv');">Free Recycling!</a>
 	<a class="sideTab rounded" href="<?php if( !$noscript ) { print "#"; } else { print "sales.php"; }?>" onclick="toggleContentDiv('salesContentDiv');">Sales</a>
 	<a class="sideTab rounded" href="<?php if( !$noscript ) { print "#"; } else { print "repairs.php"; }?>" onclick="toggleContentDiv('repairsDiv');">Service &amp; Repairs</a>
 	<a class="sideTab rounded" href="<?php if( !$noscript ) { print "#"; } else { print "faq.php"; }?>" onclick="toggleContentDiv('faqDiv');">FAQ</a>
@@ -126,41 +126,14 @@
 </div>
 			</div>
 		</div>
-		<div class="innerContent" id="onlineInventoryDiv"
+		<div class="innerContent" id="freeRecyclingDiv"
 			<?php 
-				if ( $onlineInventoryActive ) {
+				if ( $freeRecyclingActive ) {
 					print "style=\"visibility: visible;\"";
 				}
 			?>		
 		>
-			<table style="width: 100%; height: 75%; text-align: center">
-			<?php 
-				$multiRowFormat = "
-				<tr>
-					<td>
-						<img class=\"border\" src=\"images/inventory/%s.jpg\" alt='%s' />
-					</td>
-					<td>
-						<img class=\"border\" src=\"images/inventory/%s.jpg\" alt='%s' />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						%s
-					</td>
-					<td>
-						%s
-					</td>
-				</tr>
-				";
-
-				$textArray = array(6 => $text6,7 => $text7,8 => $text8,9 => $text9,10 => $text10,11 => $text11,12 => $text12,13 => $text13,14 => $text14,15 => $text15);
-				
-				for ($iRows = 6; $iRows < 16; $iRows += 2 ) {
-					printf($multiRowFormat, $iRows, $textArray[$iRows],$iRows + 1, $textArray[$iRows + 1], $textArray[$iRows], $textArray[$iRows + 1]);
-				}
-			?>
-			</table>		
+			<p><h1>More information coming soon!</h1></p>	
 		</div>
 		<div class="innerContent" id="salesContentDiv"
 			<?php 
@@ -209,7 +182,7 @@ We sell the following quality Crosley appliances, by discounted catalog order*:
 <span class="emphasis smallHeader">SERVICE &amp; REPAIRS</span>
 			</div>
 			
-			<p>We offer appliance service and repair for the low rate of <span class="emphasis">$40 per hour plus parts.</span> Service calls are $45 for the first hour and in shop estimates are $20. Bring it to us, or we can come to you, either way we can get it done!</p>
+			<p>We offer appliance service and repair for the low rate of <span class="emphasis">$60 per hour plus parts.</span> In shop estimates are $30.</p>
 			<p style="text-indent: 0px;">We can do the following:</p>
 			<ul>
 				<li>Washer Repairs</li>
