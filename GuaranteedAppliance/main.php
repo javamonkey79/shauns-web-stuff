@@ -133,7 +133,16 @@
 				}
 			?>		
 		>
-			<p><h1>More information coming soon!</h1></p>	
+			<p style="text-indent: 0px;">We recycle for <span class="emphasis">FREE</span>:</p>
+			<ul>
+				<li>Refrigerators, freezers, and AC (air conditioners)</li>
+				<li>Ranges</li>
+				<li>Washers and dryers</li>
+				<li>Dishwashers</li>
+			</ul>
+			<p>All scrap must be dropped off, no garbage please!</p>
+			<p>For pick-up services on nicer appliances, call for an appointment. Cash paid for selective appliances.</p>
+			<div class="center" style="margin-top: 75px;"><img style="height: 100px; width: 100px;" alt="We Recycle!" src="images/common/recycling.jpg" /></div>
 		</div>
 		<div class="innerContent" id="salesContentDiv"
 			<?php 
