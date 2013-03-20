@@ -147,3 +147,9 @@ body {
 	font-size: 14pt;
 	color: #005825;
 }
+
+.center {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
