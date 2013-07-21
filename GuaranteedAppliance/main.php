@@ -88,7 +88,7 @@
 			<p>				
 				We will never ask you to bring in a competitor's business card or come in on special days to
 				receive a discount. Our goal is to help you with your appliance needs without jumping through
-				unnecessary hoops. Feel free to check out our <span class="emphasis">"A"</span> rating on the <a target="_blank" href="http://www.bbb.org/eastern-washington/business-reviews/appliances-major-dealers/guaranteed-appliance-sales-service-in-spokane-valley-wa-27000348/">Better Business Bureau</a> website.
+				unnecessary hoops.
 			</p>
 			<p>				
 				You can take confidence in our expert technician. He has over 30 years of experience, E.P.A. refrigeration certification as well as Appliance Repair Certification.
